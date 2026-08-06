@@ -2,150 +2,396 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PrepMPSI</title>
-  <link rel="stylesheet" href="style.css" />
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PrepMPSI</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
+
 <body>
-  <header>
-    <button id="menuMobile" aria-controls="menuChapitre" aria-expanded="false" aria-label="Ouvrir le menu">
-      ☰
-    </button>
 
-    <div class="brand">
-  <a href="/" class="brand-link" aria-label="Accueil PrepMPSI">
-    <!-- Logo SVG (remplaçable par assets/logo.svg si tu préfères) -->
-    <svg class="logo-img" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-      <!-- silhouette stylisée de cygne -->
-      <path d="M6 26c6-8 18-10 28-8 6 1 10 5 18 6 4 0 8-1 12-4 2-1 6-4 9-6 2-1 3-3 5-4 2-1 7-2 10-1" fill="none" stroke="#cfe8ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- texte PrepMPSI -->
-      <g transform="translate(42,26)">
-        <text x="0" y="0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial" font-size="18" font-weight="700" fill="#c9e6ff">Prep</text>
-        <text x="64" y="0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial" font-size="18" font-weight="700" fill="#8ec8ff">MPSI</text>
-      </g>
-    </svg>
 
-    <div class="brand-text">
-      <h1 id="logo" aria-hidden="true">PrepMPSI</h1>
-      <p id="subtitle">Préparation Terminale → MPSI</p>
-    </div>
-  </a>
+<header>
+
+
+<button id="menuMobile">
+☰
+</button>
+
+
+<div>
+
+<h1>🐍 PrepMPSI</h1>
+
+<p>
+Terminale → MPSI
+</p>
+
 </div>
 
-    <div class="header-actions">
-      <div class="header-xp">
-        ⭐ <span id="xp">0</span> XP
-      </div>
 
-      <button id="userBtn" class="user-btn" type="button" aria-label="Se connecter">
-        Se connecter
-      </button>
-    </div>
-  </header>
+<div class="header-xp">
 
-  <div class="layout">
-    <!-- Overlay for closing aside by clicking outside -->
-    <div id="overlay" class="hidden" aria-hidden="true"></div>
+⭐ <span id="xp">0</span> XP
 
-    <!-- MENU CHAPITRES ORDINATEUR / MOBILE -->
-    <aside id="menuChapitre" aria-hidden="false">
-      <!-- Close button (mobile drawer) -->
-      <button id="closeMenu" aria-label="Fermer le menu" type="button">✖</button>
+</div>
 
-      <h2>📚 Chapitres</h2>
 
-      <div class="chapitres">
-        <button type="button">Variables</button>
-        <button type="button">Types</button>
-        <button type="button">Affectations</button>
-        <button type="button">Opérations</button>
-        <button type="button">Conditions</button>
-        <button type="button">Boucles</button>
-        <button type="button">Fonctions</button>
-        <button type="button">Listes</button>
-        <button type="button">Dictionnaires</button>
-        <button type="button">Algorithmique</button>
-      </div>
+</header>
 
-      <div class="progression">
-        <h3>🏆 Progression</h3>
-        <p>
-          Niveau : <span id="niveau">Débutant</span>
-        </p>
 
-        <div class="xp-bar">
-          <div id="xpProgress"></div>
-        </div>
 
-        <p id="xpText">0 / 100 XP</p>
-      </div>
-    </aside>
 
-    <!-- CONTENU PRINCIPAL -->
-    <main>
-      <section id="pageAccueil">
-        <h2 id="titre">Variables</h2>
-        <p id="compteur">Exercice 1 / 10</p>
 
-        <div class="card exercice">
-          <h3>Énoncé</h3>
-          <p id="enonce">Chargement...</p>
-        </div>
+<div class="layout">
 
-        <textarea id="code" placeholder="Écris ton code Python ici..."></textarea>
 
-        <div class="buttons">
-          <button id="verifier">✓ Vérifier</button>
-          <button id="suivant">➡ Suivant</button>
-        </div>
 
-        <div class="card output">Sortie :</div>
-      </section>
+<!-- MENU CHAPITRES ORDINATEUR -->
 
-      <section id="pageCours" class="hidden">
-        <h2>📚 Cours</h2>
-        <p>Choisis un chapitre</p>
-        <div id="listeCours"></div>
-      </section>
 
-      <section id="pageProfil" class="hidden">
-        <h2>🏆 Profil</h2>
+<aside id="menuChapitre">
 
-        <div class="card profil-card">
-          <h3>Progression</h3>
 
-          <p>
-            XP : <span id="xpProfil">0</span>
-          </p>
+<h2>
+📚 Chapitres
+</h2>
 
-          <p>
-            Niveau : <span id="niveauProfil">Débutant</span>
-          </p>
 
-          <div class="xp-bar">
-            <div id="xpProgressProfil"></div>
-          </div>
 
-          <div class="profile-personal">
-            <p>Nom : <span id="displayName">—</span></p>
-            <button id="editNameBtn" type="button">Modifier le nom</button>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
+<div class="chapitres">
 
-  <!-- NAVIGATION MOBILE -->
-  <nav class="bottom-nav">
-    <button id="accueil" class="nav-btn active">🏠 <span>Accueil</span></button>
-    <button id="cours" class="nav-btn">📚 <span>Cours</span></button>
-    <button id="profil" class="nav-btn">🏆 <span>Profil</span></button>
-  </nav>
 
-  <script src="data/exercices.js"></script>
-  <script src="app.js"></script>
+<button>Variables</button>
+
+<button>Types</button>
+
+<button>Affectations</button>
+
+<button>Opérations</button>
+
+<button>Conditions</button>
+
+<button>Boucles</button>
+
+<button>Fonctions</button>
+
+<button>Listes</button>
+
+<button>Dictionnaires</button>
+
+<button>Algorithmique</button>
+
+
+</div>
+
+
+
+<div class="progression">
+
+
+<h3>
+🏆 Progression
+</h3>
+
+
+<p>
+Niveau :
+<span id="niveau">
+Débutant
+</span>
+</p>
+
+
+<div class="xp-bar">
+
+<div id="xpProgress"></div>
+
+</div>
+
+
+<p id="xpText">
+0 / 100 XP
+</p>
+
+
+</div>
+
+
+</aside>
+
+
+
+
+
+
+
+
+<!-- CONTENU PRINCIPAL -->
+
+
+<main>
+
+
+
+<section id="pageAccueil">
+
+
+
+<h2 id="titre">
+Variables
+</h2>
+
+
+<p id="compteur">
+Exercice 1 / 10
+</p>
+
+
+
+<div class="card exercice">
+
+
+<h3>
+Énoncé
+</h3>
+
+
+<p id="enonce">
+
+Chargement...
+
+</p>
+
+
+</div>
+
+
+
+
+
+<textarea 
+id="code"
+placeholder="Écris ton code Python ici...">
+</textarea>
+
+
+
+
+
+
+<div class="buttons">
+
+
+<button id="verifier">
+
+✓ Vérifier
+
+</button>
+
+
+
+<button id="suivant">
+
+➡ Suivant
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<div class="card output">
+
+Sortie :
+
+</div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- PAGE COURS -->
+
+
+<section id="pageCours" class="hidden">
+
+
+<h2>
+📚 Cours
+</h2>
+
+
+<p>
+Choisis un chapitre
+</p>
+
+
+
+<div id="listeCours">
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- PAGE PROFIL -->
+
+
+<section id="pageProfil" class="hidden">
+
+
+<h2>
+🏆 Profil
+</h2>
+
+
+
+<div class="card profil-card">
+
+
+<h3>
+Progression
+</h3>
+
+
+<p>
+XP :
+<span id="xpProfil">
+0
+</span>
+</p>
+
+
+<p>
+Niveau :
+<span id="niveauProfil">
+Débutant
+</span>
+</p>
+
+
+
+<div class="xp-bar">
+
+<div id="xpProgressProfil"></div>
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+</main>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- NAVIGATION MOBILE -->
+
+
+<nav class="bottom-nav">
+
+
+<button id="accueil" class="nav-btn active">
+
+🏠
+
+<span>
+Accueil
+</span>
+
+</button>
+
+
+
+
+<button id="cours" class="nav-btn">
+
+📚
+
+<span>
+Cours
+</span>
+
+</button>
+
+
+
+
+
+<button id="profil" class="nav-btn">
+
+🏆
+
+<span>
+Profil
+</span>
+
+</button>
+
+
+
+</nav>
+
+
+
+
+
+
+<script src="data/exercices.js"></script>
+
+<script src="app.js"></script>
+
+
 </body>
 
 </html>
