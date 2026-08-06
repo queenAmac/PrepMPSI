@@ -1,0 +1,731 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+
+:root{
+    --bg:#070b18;
+    --card:rgba(255,255,255,.08);
+    --border:rgba(255,255,255,.12);
+    --primary:#6366f1;
+    --blue:#38bdf8;
+    --green:#22c55e;
+}
+
+
+*{
+    box-sizing:border-box;
+}
+
+
+body{
+
+    margin:0;
+
+    height:100vh;
+
+    overflow:hidden;
+
+    font-family:"Inter",sans-serif;
+
+    color:white;
+
+
+    background:
+    radial-gradient(circle at top left,#4338ca40,transparent 35%),
+    radial-gradient(circle at bottom right,#06b6d440,transparent 30%),
+    #070b18;
+
+}
+
+
+
+
+
+/* HEADER */
+
+header{
+
+    height:90px;
+
+    padding:20px 40px;
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+    backdrop-filter:blur(20px);
+
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+header h1{
+
+    margin:0;
+
+    font-size:32px;
+
+    font-weight:800;
+
+
+    letter-spacing:-1px;
+
+
+    background:
+
+    linear-gradient(90deg,#fff,#93c5fd);
+
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+}
+
+
+
+header p{
+
+    margin-left:25px;
+
+    color:#94a3b8;
+
+}
+
+
+
+
+
+
+
+/* LAYOUT */
+
+.container{
+
+    height:calc(100vh - 90px);
+
+    display:flex;
+
+}
+
+
+
+
+
+/* SIDEBAR */
+
+aside{
+
+    width:250px;
+
+
+    padding:20px;
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+    backdrop-filter:blur(20px);
+
+
+    border-right:1px solid var(--border);
+
+}
+
+
+
+
+aside h2{
+
+    font-size:20px;
+
+}
+
+
+
+aside button{
+
+
+    width:100%;
+
+
+    padding:11px 15px;
+
+
+    margin:5px 0;
+
+
+    border-radius:12px;
+
+
+    border:none;
+
+
+    color:white;
+
+
+    background:
+
+    rgba(255,255,255,.07);
+
+
+    cursor:pointer;
+
+
+    transition:.25s;
+
+}
+
+
+
+aside button:hover{
+
+    background:
+
+    linear-gradient(135deg,#6366f1,#8b5cf6);
+
+
+    transform:translateX(5px);
+
+}
+
+
+
+
+aside button:active{
+
+    transform:scale(.95);
+
+}
+
+
+
+
+
+
+
+/* PROGRESSION */
+
+.progression{
+
+    margin-top:20px;
+
+
+    padding:15px;
+
+
+    border-radius:18px;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+}
+
+
+
+
+
+.barre{
+
+    height:9px;
+
+
+    background:#1e293b;
+
+
+    border-radius:20px;
+
+}
+
+
+
+#barreXP{
+
+    height:100%;
+
+
+    background:
+
+    linear-gradient(90deg,#22c55e,#38bdf8,#6366f1);
+
+
+    border-radius:20px;
+
+
+    transition:.5s;
+
+}
+
+
+
+
+
+
+
+
+/* MAIN */
+
+main{
+
+
+    flex:1;
+
+
+    padding:25px 45px;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    align-items:center;
+
+
+}
+
+
+
+
+#titre{
+
+
+    width:100%;
+
+
+    max-width:900px;
+
+
+    margin:0;
+
+
+    font-size:34px;
+
+}
+
+
+
+#compteur{
+
+
+    width:100%;
+
+
+    max-width:900px;
+
+
+    color:#94a3b8;
+
+}
+
+
+
+
+
+
+
+/* QUESTION */
+
+
+#enonce{
+
+
+    width:100%;
+
+
+    max-width:900px;
+
+
+    padding:22px 28px;
+
+
+    margin:15px 0;
+
+
+    border-radius:22px;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    border:1px solid var(--border);
+
+
+    backdrop-filter:blur(15px);
+
+
+    font-size:18px;
+
+
+}
+
+
+
+
+
+
+
+/* CODE */
+
+textarea{
+
+
+    width:100%;
+
+
+    max-width:900px;
+
+
+    height:190px;
+
+
+    padding:20px;
+
+
+    border-radius:20px;
+
+
+    background:#020617;
+
+
+    color:#38bdf8;
+
+
+    border:1px solid #334155;
+
+
+    font-family:"JetBrains Mono";
+
+
+    font-size:15px;
+
+
+    resize:none;
+
+
+    transition:.3s;
+
+}
+
+
+
+textarea:focus{
+
+    border-color:#6366f1;
+
+
+    box-shadow:
+
+    0 0 25px #6366f155;
+
+}
+
+
+
+
+
+
+
+
+/* BOUTONS */
+
+main button{
+
+
+    padding:12px 25px;
+
+
+    margin:15px 8px 0;
+
+
+    border-radius:14px;
+
+
+    border:none;
+
+
+    cursor:pointer;
+
+
+    font-weight:700;
+
+
+    transition:.25s;
+
+
+}
+
+
+
+
+#verifier{
+
+
+    background:#22c55e;
+
+    color:white;
+
+}
+
+
+
+#suivant{
+
+
+    background:#6366f1;
+
+    color:white;
+
+}
+
+
+
+
+
+main button:hover{
+
+
+    transform:
+
+    translateY(-4px);
+
+
+    filter:brightness(1.15);
+
+
+    box-shadow:
+
+    0 12px 25px #0006;
+
+}
+
+
+
+main button:active{
+
+
+    transform:scale(.92);
+
+
+}
+
+
+
+
+
+
+
+
+/* OUTPUT */
+
+.output{
+
+
+    width:100%;
+
+
+    max-width:900px;
+
+
+    margin-top:15px;
+
+
+    padding:18px;
+
+
+    border-radius:18px;
+
+
+    background:#020617;
+
+
+    border:1px solid #334155;
+
+
+    font-family:"JetBrains Mono";
+
+
+}
+
+
+
+
+
+/* PETITE ANIMATION */
+
+#enonce,
+textarea,
+.output{
+
+
+    animation:
+
+    apparition .35s ease;
+
+}
+
+
+
+@keyframes apparition{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(10px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+/* ESPACEMENT ZONE CODE / BOUTONS */
+
+
+textarea{
+
+    margin-top:25px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+/* BARRE DES BOUTONS */
+
+main button{
+
+    margin-top:15px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+/* ESPACE ENTRE LES BOUTONS */
+
+#verifier,
+#suivant{
+
+    padding:13px 30px;
+
+}
+
+
+
+
+/* SORTIE PLUS AEREE */
+
+.output{
+
+    margin-top:30px;
+
+    padding:22px;
+
+}
+
+
+
+/* LES AIDES COURS INDICE CORRECTION */
+
+.aide{
+
+    width:100%;
+
+    max-width:900px;
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.aide button{
+
+    flex:1;
+
+    padding:12px;
+
+    border-radius:14px;
+
+    background:
+
+    rgba(255,255,255,.08);
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.12);
+
+}
+
+
+
+.aide button:hover{
+
+    background:
+
+    linear-gradient(135deg,#6366f1,#8b5cf6);
+
+    transform:translateY(-3px);
+
+}
+
+
+
+/* TEXTE DU COURS / INDICE */
+
+#aideTexte{
+
+    width:100%;
+
+    max-width:900px;
+
+    min-height:45px;
+
+    margin-top:10px;
+
+    padding:15px 20px;
+
+    border-radius:16px;
+
+    background:
+
+    rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    color:#cbd5e1;
+
+}
