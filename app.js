@@ -2,7 +2,9 @@ console.log("🐍 PrepMPSI chargé");
 
 
 
-/* ELEMENTS */
+/* ======================
+ELEMENTS
+====================== */
 
 
 const titre = document.getElementById("titre");
@@ -12,122 +14,104 @@ const code = document.getElementById("code");
 const output = document.querySelector(".output");
 
 
-const boutonVerifier =
-document.getElementById("verifier");
-
-const boutonSuivant =
-document.getElementById("suivant");
+const xpElement = document.getElementById("xp");
+const niveauElement = document.getElementById("niveau");
 
 
+const xpProfil = document.getElementById("xpProfil");
+const niveauProfil = document.getElementById("niveauProfil");
 
-const xpElement =
-document.getElementById("xp");
 
-const niveau =
-document.getElementById("niveau");
+const xpProgress = document.getElementById("xpProgress");
+const xpProgressProfil = document.getElementById("xpProgressProfil");
 
 
 
-const xpProfil =
-document.getElementById("xpProfil");
-
-const niveauProfil =
-document.getElementById("niveauProfil");
+const menuMobile = document.getElementById("menuMobile");
+const menuChapitre = document.getElementById("menuChapitre");
 
 
 
-const xpProgress =
-document.getElementById("xpProgress");
-
-const xpProgressProfil =
-document.getElementById("xpProgressProfil");
-
-
-
-const menuChapitre =
-document.getElementById("menuChapitre");
-
-const menuMobile =
-document.getElementById("menuMobile");
-
-
-
-
-
-/* DONNEES */
+/* ======================
+DONNEES
+====================== */
 
 
 let chapitreActuel = "Variables";
-
 
 let numeroExercice = 0;
 
 
 
-let xp =
-Number(localStorage.getItem("xp")) || 0;
+let xp = Number(
+    localStorage.getItem("xp")
+) || 0;
 
 
 
 let progression =
 JSON.parse(
-localStorage.getItem("progression")
+    localStorage.getItem("progression")
 )
-||
-{};
+|| {};
 
 
 
 
 
 
-
-
-/* XP + NIVEAU */
+/* ======================
+NIVEAUX
+====================== */
 
 
 function mettreAJourNiveau(){
 
 
-let niveauTexte;
+let nom;
 
 
 if(xp < 100){
 
-niveauTexte="Débutant";
+    nom="🌱 Débutant";
 
 }
-
 
 else if(xp < 300){
 
-niveauTexte="Apprenti Python";
+    nom="🐍 Python Initié";
 
 }
 
+else if(xp < 700){
 
-else if(xp < 600){
-
-niveauTexte="Programmeur";
+    nom="💻 Programmeur";
 
 }
 
+else if(xp < 1200){
+
+    nom="⚡ Algorithmicien";
+
+}
 
 else{
 
-niveauTexte="Niveau MPSI 🚀";
+    nom="🚀 Niveau MPSI";
 
 }
 
 
 
-niveau.textContent=niveauTexte;
+niveauElement.textContent = nom;
 
-niveauProfil.textContent=niveauTexte;
-
+niveauProfil.textContent = nom;
 
 
 }
+
+
+
 
 
 
@@ -145,30 +129,28 @@ xpProfil.textContent=xp;
 let objectif=100;
 
 
-if(xp>=100 && xp<300){
-
+if(xp>=100 && xp<300)
 objectif=300;
 
-}
 
-else if(xp>=300 && xp<600){
+else if(xp>=300 && xp<700)
+objectif=700;
 
-objectif=600;
 
-}
+else if(xp>=700 && xp<1200)
+objectif=1200;
 
-else if(xp>=600){
 
-objectif=1000;
+else if(xp>=1200)
+objectif=1500;
 
-}
 
 
 
 let pourcentage =
 Math.min(
-(xp/objectif)*100,
-100
+    xp/objectif*100,
+    100
 );
 
 
@@ -181,8 +163,8 @@ xpProgressProfil.style.width =
 pourcentage+"%";
 
 
-
 }
+
 
 
 
@@ -192,15 +174,14 @@ function sauvegarder(){
 
 
 localStorage.setItem(
-"xp",
-xp
+    "xp",
+    xp
 );
 
 
-
 localStorage.setItem(
-"progression",
-JSON.stringify(progression)
+    "progression",
+    JSON.stringify(progression)
 );
 
 
@@ -209,11 +190,17 @@ JSON.stringify(progression)
 
 
 
-/* AFFICHAGE EXERCICE */
+
+
+
+
+
+/* ======================
+EXERCICES
+====================== */
 
 
 function afficherExercice(){
-
 
 
 let exercice =
@@ -241,8 +228,8 @@ exercice.enonce;
 code.value="";
 
 
-output.textContent="Sortie :";
-
+output.textContent =
+"Sortie :";
 
 
 }
@@ -254,7 +241,9 @@ output.textContent="Sortie :";
 
 
 
-/* CHAPITRES */
+/* ======================
+CHAPITRES
+====================== */
 
 
 document
@@ -262,9 +251,7 @@ document
 .forEach(button=>{
 
 
-button.addEventListener(
-"click",
-()=>{
+button.onclick=()=>{
 
 
 chapitreActuel =
@@ -284,10 +271,13 @@ afficherExercice();
 menuChapitre.classList.remove("active");
 
 
+};
+
+
+
 });
 
 
-});
 
 
 
@@ -295,14 +285,14 @@ menuChapitre.classList.remove("active");
 
 
 
+/* ======================
+VERIFIER
+====================== */
 
 
-/* VERIFICATION */
-
-
-boutonVerifier.addEventListener(
-"click",
-()=>{
+document
+.getElementById("verifier")
+.onclick=()=>{
 
 
 let exercice =
@@ -311,9 +301,10 @@ exercices[chapitreActuel][numeroExercice];
 
 
 if(
-code.value.includes(exercice.solution)
+code.value.includes(
+exercice.solution
+)
 ){
-
 
 
 output.textContent =
@@ -336,7 +327,6 @@ numeroExercice+1;
 sauvegarder();
 
 
-
 mettreAJourXP();
 
 mettreAJourNiveau();
@@ -345,21 +335,17 @@ mettreAJourNiveau();
 
 }
 
-
-
 else{
 
 
 output.textContent =
-"❌ Pas encore";
+"❌ Essaie encore";
 
 
 }
 
 
-
-});
-
+};
 
 
 
@@ -367,12 +353,16 @@ output.textContent =
 
 
 
-/* SUIVANT */
 
 
-boutonSuivant.addEventListener(
-"click",
-()=>{
+/* ======================
+SUIVANT
+====================== */
+
+
+document
+.getElementById("suivant")
+.onclick=()=>{
 
 
 if(
@@ -387,9 +377,7 @@ numeroExercice++;
 afficherExercice();
 
 
-
 }
-
 
 else{
 
@@ -401,9 +389,7 @@ output.textContent =
 }
 
 
-
-});
-
+};
 
 
 
@@ -412,34 +398,40 @@ output.textContent =
 
 
 
-/* MENU MOBILE */
+/* ======================
+MENU MOBILE
+====================== */
 
 
-menuMobile.addEventListener(
-"click",
-()=>{
+menuMobile.onclick=()=>{
 
 
-menuChapitre.classList.toggle("active");
+menuChapitre
+.classList.toggle("active");
 
 
-});
-
-
-
-
+};
 
 
 
 
-/* NAVIGATION MOBILE */
+
+
+
+
+
+/* ======================
+NAVIGATION MOBILE
+====================== */
 
 
 const pageAccueil =
 document.getElementById("pageAccueil");
 
+
 const pageCours =
 document.getElementById("pageCours");
+
 
 const pageProfil =
 document.getElementById("pageProfil");
@@ -466,10 +458,10 @@ page.classList.remove("hidden");
 
 
 
+
 document
 .getElementById("accueil")
-.onclick =
-()=>{
+.onclick=()=>{
 
 
 changerPage(pageAccueil);
@@ -484,8 +476,7 @@ changerPage(pageAccueil);
 
 document
 .getElementById("cours")
-.onclick =
-()=>{
+.onclick=()=>{
 
 
 changerPage(pageCours);
@@ -501,10 +492,10 @@ chargerCours();
 
 
 
+
 document
 .getElementById("profil")
-.onclick =
-()=>{
+.onclick=()=>{
 
 
 changerPage(pageProfil);
@@ -523,10 +514,6 @@ mettreAJourNiveau();
 
 
 
-
-
-
-/* LISTE COURS MOBILE */
 
 
 function chargerCours(){
@@ -553,18 +540,14 @@ bouton.textContent =
 
 
 
-bouton.onclick =
-()=>{
+bouton.onclick=()=>{
 
 
-chapitreActuel =
-chapitre;
-
+chapitreActuel=chapitre;
 
 
 numeroExercice =
 progression[chapitre] || 0;
-
 
 
 changerPage(pageAccueil);
@@ -592,12 +575,81 @@ liste.appendChild(bouton);
 
 
 
-/* INITIALISATION */
+
+
+/* ======================
+BARRE MOBILE INTELLIGENTE
+====================== */
+
+
+const barreNav =
+document.querySelector(".bottom-nav");
+
+
+let timerBarre;
+
+
+
+function afficherBarre(){
+
+
+barreNav.classList.remove("hide");
+
+
+
+clearTimeout(timerBarre);
+
+
+
+timerBarre=setTimeout(()=>{
+
+
+barreNav.classList.add("hide");
+
+
+},3000);
+
+
+}
+
+
+
+window.addEventListener(
+"scroll",
+afficherBarre
+);
+
+
+
+window.addEventListener(
+"touchstart",
+afficherBarre
+);
+
+
+
+window.addEventListener(
+"mousemove",
+afficherBarre
+);
+
+
+
+
+
+
+
+
+
+/* ======================
+START
+====================== */
 
 
 mettreAJourXP();
 
 mettreAJourNiveau();
 
+afficherBarre();
 
 afficherExercice();
