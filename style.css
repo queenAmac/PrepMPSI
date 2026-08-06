@@ -1,42 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
-
-
-:root{
-    --bg:#070b18;
-    --card:rgba(255,255,255,.08);
-    --border:rgba(255,255,255,.12);
-    --primary:#6366f1;
-    --blue:#38bdf8;
-    --green:#22c55e;
-}
-
-
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
 
 body{
 
-    margin:0;
-
-    height:100vh;
-
-    overflow:hidden;
-
-    font-family:"Inter",sans-serif;
+    min-height:100vh;
+    background:
+    linear-gradient(135deg,#050505,#101827);
 
     color:white;
 
-
-    background:
-    radial-gradient(circle at top left,#4338ca40,transparent 35%),
-    radial-gradient(circle at bottom right,#06b6d440,transparent 30%),
-    #070b18;
-
 }
-
-
 
 
 
@@ -46,57 +24,53 @@ header{
 
     height:90px;
 
-    padding:20px 40px;
-
-
     display:flex;
-
     align-items:center;
 
+    gap:20px;
+
+    padding:20px 40px;
 
     background:
-
-    rgba(255,255,255,.05);
-
+    rgba(255,255,255,0.08);
 
     backdrop-filter:blur(20px);
 
-
-    border-bottom:1px solid var(--border);
+    border-bottom:
+    1px solid rgba(255,255,255,.15);
 
 }
+
 
 
 header h1{
 
-    margin:0;
-
-    font-size:32px;
-
-    font-weight:800;
-
-
-    letter-spacing:-1px;
-
-
-    background:
-
-    linear-gradient(90deg,#fff,#93c5fd);
-
-
-    -webkit-background-clip:text;
-
-    color:transparent;
+    font-size:34px;
 
 }
-
 
 
 header p{
 
-    margin-left:25px;
+    color:#b8b8b8;
 
-    color:#94a3b8;
+}
+
+
+
+/* bouton menu mobile */
+
+#menuMobile{
+
+    display:none;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:28px;
 
 }
 
@@ -104,50 +78,41 @@ header p{
 
 
 
-
-
-/* LAYOUT */
+/* STRUCTURE */
 
 .container{
 
-    height:calc(100vh - 90px);
-
     display:flex;
+
+    min-height:calc(100vh - 90px);
 
 }
 
 
 
-
-
-/* SIDEBAR */
+/* MENU GAUCHE */
 
 aside{
 
-    width:250px;
+    width:260px;
 
-
-    padding:20px;
-
+    padding:25px;
 
     background:
-
-    rgba(255,255,255,.05);
-
+    rgba(255,255,255,.06);
 
     backdrop-filter:blur(20px);
 
-
-    border-right:1px solid var(--border);
+    border-right:
+    1px solid rgba(255,255,255,.12);
 
 }
-
 
 
 
 aside h2{
 
-    font-size:20px;
+    margin-bottom:20px;
 
 }
 
@@ -158,25 +123,20 @@ aside button{
 
     width:100%;
 
+    padding:12px;
 
-    padding:11px 15px;
-
-
-    margin:5px 0;
-
-
-    border-radius:12px;
+    margin-bottom:10px;
 
 
     border:none;
 
+    border-radius:14px;
+
 
     color:white;
 
-
     background:
-
-    rgba(255,255,255,.07);
+    rgba(255,255,255,.08);
 
 
     cursor:pointer;
@@ -190,21 +150,10 @@ aside button{
 
 aside button:hover{
 
-    background:
-
-    linear-gradient(135deg,#6366f1,#8b5cf6);
-
-
     transform:translateX(5px);
 
-}
-
-
-
-
-aside button:active{
-
-    transform:scale(.95);
+    background:
+    rgba(255,255,255,.18);
 
 }
 
@@ -212,13 +161,156 @@ aside button:active{
 
 
 
-
-
-/* PROGRESSION */
 
 .progression{
 
+
+    margin-top:30px;
+
+    padding:15px;
+
+
+    border-radius:20px;
+
+
+    background:
+    rgba(255,255,255,.08);
+
+}
+
+
+
+
+
+
+
+/* CONTENU */
+
+main{
+
+
+    flex:1;
+
+    padding:40px;
+
+    max-width:900px;
+
+    margin:auto;
+
+
+}
+
+
+
+#titre{
+
+    font-size:38px;
+
+}
+
+
+
+#compteur{
+
+    color:#aaa;
+
+    margin:10px 0 25px;
+
+}
+
+
+
+#enonce{
+
+
+    padding:25px;
+
+
+    border-radius:25px;
+
+
+    background:
+    rgba(255,255,255,.1);
+
+
+    backdrop-filter:blur(20px);
+
+
+    font-size:18px;
+
+
+    margin-bottom:25px;
+
+}
+
+
+
+
+
+
+
+textarea{
+
+
+    width:100%;
+
+    height:220px;
+
+
+    padding:20px;
+
+
+    border-radius:25px;
+
+
+    border:none;
+
+
+    resize:none;
+
+
+    background:#080808;
+
+
+    color:white;
+
+
+    font-size:16px;
+
+}
+
+
+
+
+
+
+
+.buttons{
+
+
+    display:flex;
+
+    gap:15px;
+
     margin-top:20px;
+
+}
+
+
+
+button{
+
+
+    cursor:pointer;
+
+}
+
+
+
+.buttons button{
+
+
+    flex:1;
 
 
     padding:15px;
@@ -227,243 +319,14 @@ aside button:active{
     border-radius:18px;
 
 
-    background:
-
-    rgba(255,255,255,.08);
-
-
-}
-
-
-
-
-
-.barre{
-
-    height:9px;
-
-
-    background:#1e293b;
-
-
-    border-radius:20px;
-
-}
-
-
-
-#barreXP{
-
-    height:100%;
-
-
-    background:
-
-    linear-gradient(90deg,#22c55e,#38bdf8,#6366f1);
-
-
-    border-radius:20px;
-
-
-    transition:.5s;
-
-}
-
-
-
-
-
-
-
-
-/* MAIN */
-
-main{
-
-
-    flex:1;
-
-
-    padding:25px 45px;
-
-
-    display:flex;
-
-
-    flex-direction:column;
-
-
-    align-items:center;
-
-
-}
-
-
-
-
-#titre{
-
-
-    width:100%;
-
-
-    max-width:900px;
-
-
-    margin:0;
-
-
-    font-size:34px;
-
-}
-
-
-
-#compteur{
-
-
-    width:100%;
-
-
-    max-width:900px;
-
-
-    color:#94a3b8;
-
-}
-
-
-
-
-
-
-
-/* QUESTION */
-
-
-#enonce{
-
-
-    width:100%;
-
-
-    max-width:900px;
-
-
-    padding:22px 28px;
-
-
-    margin:15px 0;
-
-
-    border-radius:22px;
-
-
-    background:
-
-    rgba(255,255,255,.08);
-
-
-    border:1px solid var(--border);
-
-
-    backdrop-filter:blur(15px);
-
-
-    font-size:18px;
-
-
-}
-
-
-
-
-
-
-
-/* CODE */
-
-textarea{
-
-
-    width:100%;
-
-
-    max-width:900px;
-
-
-    height:190px;
-
-
-    padding:20px;
-
-
-    border-radius:20px;
-
-
-    background:#020617;
-
-
-    color:#38bdf8;
-
-
-    border:1px solid #334155;
-
-
-    font-family:"JetBrains Mono";
-
-
-    font-size:15px;
-
-
-    resize:none;
-
-
-    transition:.3s;
-
-}
-
-
-
-textarea:focus{
-
-    border-color:#6366f1;
-
-
-    box-shadow:
-
-    0 0 25px #6366f155;
-
-}
-
-
-
-
-
-
-
-
-/* BOUTONS */
-
-main button{
-
-
-    padding:12px 25px;
-
-
-    margin:15px 8px 0;
-
-
-    border-radius:14px;
-
-
     border:none;
 
 
-    cursor:pointer;
+    color:white;
 
 
-    font-weight:700;
+    background:
+    linear-gradient(135deg,#6366f1,#8b5cf6);
 
 
     transition:.25s;
@@ -473,55 +336,9 @@ main button{
 
 
 
+.buttons button:hover{
 
-#verifier{
-
-
-    background:#22c55e;
-
-    color:white;
-
-}
-
-
-
-#suivant{
-
-
-    background:#6366f1;
-
-    color:white;
-
-}
-
-
-
-
-
-main button:hover{
-
-
-    transform:
-
-    translateY(-4px);
-
-
-    filter:brightness(1.15);
-
-
-    box-shadow:
-
-    0 12px 25px #0006;
-
-}
-
-
-
-main button:active{
-
-
-    transform:scale(.92);
-
+    transform:translateY(-4px);
 
 }
 
@@ -530,35 +347,21 @@ main button:active{
 
 
 
-
-
-/* OUTPUT */
 
 .output{
 
 
-    width:100%;
+    margin-top:25px;
 
 
-    max-width:900px;
+    padding:20px;
 
 
-    margin-top:15px;
+    border-radius:20px;
 
 
-    padding:18px;
-
-
-    border-radius:18px;
-
-
-    background:#020617;
-
-
-    border:1px solid #334155;
-
-
-    font-family:"JetBrains Mono";
+    background:
+    rgba(255,255,255,.08);
 
 
 }
@@ -567,414 +370,262 @@ main button:active{
 
 
 
-/* PETITE ANIMATION */
 
-#enonce,
-textarea,
-.output{
+/* BARRE BAS MOBILE */
+
+.bottom-nav{
 
 
-    animation:
-
-    apparition .35s ease;
+    display:none;
 
 }
 
 
 
-@keyframes apparition{
 
 
-from{
 
-opacity:0;
 
-transform:translateY(10px);
+/* =====================
+   MOBILE
+===================== */
+
+
+@media(max-width:768px){
+
+
+
+body{
+
+    padding-bottom:80px;
+
+}
+
+
+
+
+header{
+
+    height:75px;
+
+    padding:15px 20px;
 
 }
 
 
-to{
 
-opacity:1;
+#menuMobile{
 
-transform:translateY(0);
+    display:block;
+
+}
+
+
+
+header h1{
+
+    font-size:24px;
 
 }
 
+
+header p{
+
+    display:none;
+
 }
-/* ESPACEMENT ZONE CODE / BOUTONS */
+
+
+
+
+
+.container{
+
+    display:block;
+
+}
+
+
+
+
+aside{
+
+
+    position:fixed;
+
+
+    top:0;
+
+    left:-280px;
+
+
+    height:100vh;
+
+    width:270px;
+
+
+    z-index:20;
+
+
+    transition:.35s;
+
+
+}
+
+
+aside.active{
+
+    left:0;
+
+}
+
+
+
+
+
+main{
+
+
+    padding:20px 15px;
+
+}
+
+
+
+#titre{
+
+    font-size:30px;
+
+}
+
+
+
+
+#enonce{
+
+    font-size:16px;
+
+    padding:20px;
+
+}
+
 
 
 textarea{
 
-    margin-top:25px;
-
-    margin-bottom:20px;
-
-}
-
-
-
-/* BARRE DES BOUTONS */
-
-main button{
-
-    margin-top:15px;
-
-    margin-bottom:10px;
-
-}
-
-
-
-/* ESPACE ENTRE LES BOUTONS */
-
-#verifier,
-#suivant{
-
-    padding:13px 30px;
+    height:180px;
 
 }
 
 
 
 
-/* SORTIE PLUS AEREE */
+.buttons{
 
-.output{
 
-    margin-top:30px;
+    flex-direction:column;
 
-    padding:22px;
 
 }
 
 
 
-/* LES AIDES COURS INDICE CORRECTION */
+.buttons button{
 
-.aide{
 
     width:100%;
 
-    max-width:900px;
+}
+
+
+
+
+
+/* BARRE APPLICATION */
+
+.bottom-nav{
+
+
+    position:fixed;
+
 
     display:flex;
 
-    gap:15px;
 
-    margin-top:20px;
+    bottom:15px;
 
-    margin-bottom:10px;
+
+    left:15px;
+
+
+    right:15px;
+
+
+    height:70px;
+
+
+    border-radius:25px;
+
+
+    background:
+
+    rgba(255,255,255,.12);
+
+
+    backdrop-filter:blur(25px);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.2);
+
+
+    z-index:30;
+
+
+    justify-content:space-around;
+
+
+    align-items:center;
+
 
 }
 
 
 
-.aide button{
+.bottom-nav button{
 
-    flex:1;
 
-    padding:12px;
+    background:none;
 
-    border-radius:14px;
+    border:none;
 
-    background:
-
-    rgba(255,255,255,.08);
 
     color:white;
 
-    border:1px solid rgba(255,255,255,.12);
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:5px;
+
+
+    font-size:22px;
+
 
 }
 
 
 
-.aide button:hover{
+.bottom-nav span{
 
-    background:
-
-    linear-gradient(135deg,#6366f1,#8b5cf6);
-
-    transform:translateY(-3px);
+    font-size:12px;
 
 }
 
-
-
-/* TEXTE DU COURS / INDICE */
-
-#aideTexte{
-
-    width:100%;
-
-    max-width:900px;
-
-    min-height:45px;
-
-    margin-top:10px;
-
-    padding:15px 20px;
-
-    border-radius:16px;
-
-    background:
-
-    rgba(255,255,255,.06);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    color:#cbd5e1;
-
-}
-/* ===========================
-   VERSION MOBILE
-   =========================== */
-
-
-@media (max-width: 768px){
-
-
-    body{
-
-        overflow:auto;
-
-    }
-
-
-
-    /* HEADER */
-
-    header{
-
-        height:auto;
-
-        padding:20px;
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-        gap:8px;
-
-    }
-
-
-
-    header h1{
-
-        font-size:28px;
-
-    }
-
-
-    header p{
-
-        margin:0;
-
-        font-size:15px;
-
-    }
-
-
-
-
-
-
-    /* STRUCTURE */
-
-    .container{
-
-        flex-direction:column;
-
-        height:auto;
-
-    }
-
-
-
-
-
-
-    /* MENU */
-
-    aside{
-
-        width:100%;
-
-        padding:15px;
-
-        border-right:none;
-
-        border-bottom:1px solid rgba(255,255,255,.12);
-
-    }
-
-
-
-    aside h2{
-
-        font-size:18px;
-
-    }
-
-
-
-    aside button{
-
-        display:inline-block;
-
-        width:auto;
-
-        margin:5px;
-
-        padding:10px 15px;
-
-        font-size:13px;
-
-    }
-
-
-
-
-
-
-    /* PROGRESSION */
-
-    .progression{
-
-        margin-top:15px;
-
-    }
-
-
-
-
-
-
-
-    /* CONTENU */
-
-    main{
-
-        padding:20px 15px;
-
-    }
-
-
-
-    #titre{
-
-        font-size:28px;
-
-    }
-
-
-
-    #compteur{
-
-        font-size:14px;
-
-    }
-
-
-
-
-
-
-
-    /* QUESTION */
-
-    #enonce{
-
-        padding:18px;
-
-        border-radius:18px;
-
-        font-size:16px;
-
-        line-height:1.5;
-
-    }
-
-
-
-
-
-
-
-    /* EDITEUR CODE */
-
-    textarea{
-
-        height:220px;
-
-        padding:18px;
-
-        font-size:14px;
-
-        border-radius:18px;
-
-    }
-
-
-
-
-
-
-
-
-    /* BOUTONS */
-
-    main button{
-
-        width:100%;
-
-        margin:8px 0;
-
-        padding:14px;
-
-    }
-
-
-
-
-
-    .aide{
-
-        flex-direction:column;
-
-        width:100%;
-
-    }
-
-
-
-    .aide button{
-
-        width:100%;
-
-    }
-
-
-
-
-
-
-
-    /* SORTIE */
-
-    .output{
-
-        padding:15px;
-
-        font-size:14px;
-
-        border-radius:18px;
-
-    }
 
 
 }
