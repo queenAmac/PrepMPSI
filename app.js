@@ -77,42 +77,48 @@ function chargerUtilisateur(){
 
 
 
-startButton.onclick=function(){
+startButton.addEventListener("click", ()=>{
 
 
-    let valeur=pseudoInput.value.trim();
+    let valeur = pseudoInput.value.trim();
 
 
+    if(valeur === ""){
 
-    if(valeur){
+        alert("Entre un pseudo 🐍");
 
-
-        pseudo=valeur;
-
-
-
-        localStorage.setItem(
-            "pseudo",
-            pseudo
-        );
-
-
-
-        pseudoPopup.style.display="none";
-
-
-
-        messageSnake.innerHTML=
-
-        `Salut ${pseudo} 🐍 !
-        Prêt à progresser ?`;
+        return;
 
     }
 
 
 
-};
+    pseudo = valeur;
 
+
+
+    localStorage.setItem(
+        "pseudo",
+        pseudo
+    );
+
+
+
+    pseudoPopup.style.display="none";
+
+
+
+    pseudoProfil.textContent=pseudo;
+
+
+
+    messageSnake.innerHTML =
+    `Coucou ${pseudo} 👋🐍<br>
+    On reprend où on en était ?`;
+
+
+
+});
 
 
 
