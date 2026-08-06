@@ -1,6 +1,6 @@
 /* ==========================
    PREPMPSI 2.0 - APP.JS
-========================== */
+   ========================== */
 
 
 /* ==========================
@@ -16,16 +16,21 @@ let pseudo = localStorage.getItem("pseudo");
 
 
 const pseudoPopup = document.getElementById("pseudoPopup");
+
 const pseudoInput = document.getElementById("pseudoInput");
+
 const startButton = document.getElementById("startButton");
 
 const pseudoProfil = document.getElementById("pseudoProfil");
 
 const xpElement = document.getElementById("xp");
+
 const xpProfil = document.getElementById("xpProfil");
+
 const xpText = document.getElementById("xpText");
 
 const niveau = document.getElementById("niveau");
+
 const niveauProfil = document.getElementById("niveauProfil");
 
 const xpProgress = document.getElementById("xpProgress");
@@ -37,15 +42,11 @@ const messageSnake = document.getElementById("messageSnake");
 
 
 /* ==========================
-   UTILISATEUR
+   PSEUDO
 ========================== */
 
 
 function chargerUtilisateur(){
-
-
-    if(!pseudoPopup) return;
-
 
 
     if(pseudo){
@@ -55,6 +56,7 @@ function chargerUtilisateur(){
 
 
     }
+
 
     else{
 
@@ -75,33 +77,23 @@ function chargerUtilisateur(){
 
 
 
+startButton.addEventListener("click", ()=>{
 
 
-if(startButton){
+    let valeur = pseudoInput.value.trim();
 
 
-startButton.onclick=function(){
-
-
-
-    let valeur=pseudoInput.value.trim();
-
-
-
-    if(valeur===""){
-
+    if(valeur === ""){
 
         alert("Entre un pseudo 🐍");
 
-
         return;
-
 
     }
 
 
 
-    pseudo=valeur;
+    pseudo = valeur;
 
 
 
@@ -116,16 +108,17 @@ startButton.onclick=function(){
 
 
 
-    afficherPseudo();
+    pseudoProfil.textContent=pseudo;
 
 
 
-};
+    messageSnake.innerHTML =
+    `Coucou ${pseudo} 👋🐍<br>
+    On reprend où on en était ?`;
 
 
 
-}
-
+});
 
 
 
@@ -135,31 +128,25 @@ startButton.onclick=function(){
 function afficherPseudo(){
 
 
-    if(!pseudo) return;
+    if(pseudo){
 
-
-
-    if(pseudoProfil){
 
         pseudoProfil.textContent=pseudo;
 
-    }
-
-
-
-    if(messageSnake){
 
 
         messageSnake.innerHTML=
 
-        `Coucou ${pseudo} 👋🐍<br>
-        On reprend où on en était ?`;
 
+        `Coucou ${pseudo} 👋
+        On reprend là où on s'était arrêté ? 🐍`;
 
     }
 
 
 }
+
+
 
 
 
@@ -176,6 +163,7 @@ function ajouterXP(nombre){
 
 
     xp+=nombre;
+
 
 
     localStorage.setItem(
@@ -195,20 +183,17 @@ function ajouterXP(nombre){
 
 
 
+
 function actualiserXP(){
 
 
-
-    if(xpElement)
-        xpElement.textContent=xp;
+    xpElement.textContent=xp;
 
 
-    if(xpProfil)
-        xpProfil.textContent=xp;
+    xpProfil.textContent=xp;
 
 
-    if(xpText)
-        xpText.textContent=xp+" XP";
+    xpText.textContent=xp+" XP";
 
 
 
@@ -224,6 +209,7 @@ function actualiserXP(){
 
     }
 
+
     else if(xp<300){
 
 
@@ -232,6 +218,7 @@ function actualiserXP(){
 
     }
 
+
     else if(xp<700){
 
 
@@ -239,6 +226,7 @@ function actualiserXP(){
 
 
     }
+
 
     else{
 
@@ -250,32 +238,43 @@ function actualiserXP(){
 
 
 
-    if(niveau)
-        niveau.textContent=niveauTexte;
+
+    niveau.textContent=niveauTexte;
 
 
-    if(niveauProfil)
-        niveauProfil.textContent=niveauTexte;
+    niveauProfil.textContent=niveauTexte;
 
 
 
-    if(xpProgress){
 
 
-        xpProgress.style.width=
-        (xp%100)+"%";
+    let progression=(xp%100);
 
 
-    }/* ==========================
-   PREPSNAKE ASSISTANT
+
+    xpProgress.style.width=
+    progression+"%";
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+/* ==========================
+   MESSAGES PREPSNAKE
 ========================== */
 
 
+
 function snakeMessage(type){
-
-
-    if(!messageSnake) return;
-
 
 
     let nom=pseudo || "champion";
@@ -285,47 +284,52 @@ function snakeMessage(type){
     const messages={
 
 
+
         succes:
 
-        `YES ${nom} 🐍🔥<br>
+        `YES ${nom} 🐍🔥
         Ton code fonctionne ! +10 XP`,
 
 
 
         erreur:
 
-        `Pas grave ${nom} 😌<br>
-        Les bugs font partie de l'apprentissage.`,
+        `Pas grave ${nom} 😌
+        Même les développeurs font des bugs.
+        On cherche ensemble ?`,
+
 
 
 
         debut:
 
-        `Coucou ${nom} 👋🐍<br>
+        `Coucou ${nom} 👋
         On reprend où on en était ?`,
+
 
 
 
         indice:
 
-        `Petit indice ${nom} 💡<br>
-        Regarde la structure avant de chercher la réponse.`,
+        `Petit indice ${nom} 💡 :
+        regarde bien la structure du problème 😉`,
 
 
 
         aide:
 
-        `Je suis ton serpent assistant 🐍<br>
-        Je t'aide à réfléchir, pas à faire l'exercice à ta place 😉`
+        `Je suis ton serpent assistant 🐍
+        Je peux t'aider à réfléchir,
+        mais je ne vais pas manger l'exercice à ta place 😄`
+
 
 
     };
 
 
 
-    messageSnake.innerHTML =
-    messages[type] || messages.debut;
-
+    messageSnake.innerHTML=
+    messages[type];
 
 }
 
@@ -342,16 +346,15 @@ function snakeMessage(type){
 ========================== */
 
 
-const boutonIndice =
+const boutonIndice=
 document.getElementById("indice");
 
 
-const boutonIA =
+const boutonIA=
 document.getElementById("aideIA");
 
 
 
-if(boutonIndice){
 
 
 boutonIndice.onclick=function(){
@@ -363,13 +366,8 @@ boutonIndice.onclick=function(){
 };
 
 
-}
 
 
-
-
-
-if(boutonIA){
 
 
 boutonIA.onclick=function(){
@@ -381,107 +379,56 @@ boutonIA.onclick=function(){
 };
 
 
-}
-
-
-
-
-
 
 
 
 
 /* ==========================
-   NAVIGATION MOBILE / APP
+   NAVIGATION
 ========================== */
 
 
-const pages={
-
-
-    accueil:
-    document.getElementById("pageAccueil"),
-
-
-
-    cours:
-    document.getElementById("pageCours"),
-
-
-
-    profil:
-    document.getElementById("pageProfil")
-
-};
-
-
-
-
-
-
-function ouvrirPage(nom){
-
-
-
-    Object.values(pages).forEach(page=>{
-
-
-        if(page){
-
-            page.classList.add("hidden");
-
-        }
-
-
-    });
-
-
-
-
-    if(pages[nom]){
-
-
-        pages[nom].classList.remove("hidden");
-
-
-    }
-
-
-}
-
-
-
-
-
-
-
-const navAccueil =
+const accueil=
 document.getElementById("accueil");
 
 
-const navCours =
+const cours=
 document.getElementById("cours");
 
 
-const navProfil =
+const profil=
 document.getElementById("profil");
 
 
 
+const pageAccueil=
+document.getElementById("pageAccueil");
+
+
+const pageCours=
+document.getElementById("pageCours");
+
+
+const pageProfil=
+document.getElementById("pageProfil");
 
 
 
 
-if(navAccueil){
+
+function changerPage(page){
 
 
-navAccueil.onclick=function(){
+    pageAccueil.classList.add("hidden");
+
+    pageCours.classList.add("hidden");
+
+    pageProfil.classList.add("hidden");
 
 
-    ouvrirPage("accueil");
 
+    page.classList.remove("hidden");
 
-};
 
 
 }
@@ -489,51 +436,36 @@ navAccueil.onclick=function(){
 
 
 
+accueil.onclick=function(){
 
 
-if(navCours){
-
-
-navCours.onclick=function(){
-
-
-    ouvrirPage("cours");
+    changerPage(pageAccueil);
 
 
 };
 
 
-}
 
 
+cours.onclick=function(){
 
 
-
-
-if(navProfil){
-
-
-navProfil.onclick=function(){
-
-
-    ouvrirPage("profil");
+    changerPage(pageCours);
 
 
 };
 
 
-}
 
 
+profil.onclick=function(){
 
 
+    changerPage(pageProfil);
 
 
-
-
-
-/* ==========================
-   MENU CHAPITRES MOBILE
+};/* ==========================
+   MENU MOBILE
 ========================== */
 
 
@@ -552,10 +484,6 @@ document.getElementById("menuChapitre");
 
 
 
-
-if(menuMobile && menuChapitre){
-
-
 menuMobile.onclick=function(){
 
 
@@ -565,13 +493,7 @@ menuMobile.onclick=function(){
 };
 
 
-}
 
-
-
-
-
-if(fermerMenu && menuChapitre){
 
 
 fermerMenu.onclick=function(){
@@ -583,11 +505,13 @@ fermerMenu.onclick=function(){
 };
 
 
-}
 
 
 
 
+
+
+/* Fermer le menu en cliquant sur un chapitre */
 
 
 document.querySelectorAll(".chapitres button")
@@ -597,23 +521,26 @@ document.querySelectorAll(".chapitres button")
     bouton.onclick=function(){
 
 
-        if(menuChapitre){
-
-
-            menuChapitre.classList.remove("active");
-
-
-        }
-
+        menuChapitre.classList.remove("active");
 
 
         snakeMessage("debut");
 
 
-    };
+    }
 
 
-});/* ==========================
+});
+
+
+
+
+
+
+
+
+
+/* ==========================
    CHANGEMENT PSEUDO
 ========================== */
 
@@ -624,17 +551,14 @@ document.getElementById("changerPseudo");
 
 
 
-if(changerPseudo){
-
-
 
 changerPseudo.onclick=function(){
 
 
-
-    let nouveau = prompt(
+    let nouveau=
+    prompt(
         "🐍 Nouveau pseudo :",
-        pseudo || ""
+        pseudo
     );
 
 
@@ -642,7 +566,8 @@ changerPseudo.onclick=function(){
     if(nouveau && nouveau.trim()){
 
 
-        pseudo = nouveau.trim();
+        pseudo=
+        nouveau.trim();
 
 
 
@@ -661,10 +586,6 @@ changerPseudo.onclick=function(){
 
 
 };
-
-
-
-}
 
 
 
@@ -690,11 +611,8 @@ let timerNav;
 
 
 
+
 function cacherNavigation(){
-
-
-    if(!bottomNav) return;
-
 
 
     if(window.innerWidth<=768){
@@ -712,13 +630,7 @@ function cacherNavigation(){
 
 
 
-
-
 function montrerNavigation(){
-
-
-    if(!bottomNav) return;
-
 
 
     bottomNav.classList.remove("hide");
@@ -730,20 +642,11 @@ function montrerNavigation(){
 
 
     timerNav=setTimeout(
-
         cacherNavigation,
-
         1750
-
     );
 
-
-
 }
-
-
-
-
 
 
 
@@ -762,7 +665,7 @@ window.addEventListener(
 
 
 window.addEventListener(
-    "touchmove",
+    "mousemove",
     montrerNavigation
 );
 
@@ -775,8 +678,9 @@ window.addEventListener(
 
 
 /* ==========================
-   NAVIGATION ACTIVE
+   BOUTONS NAV ACTIFS
 ========================== */
+
 
 
 document.querySelectorAll(".nav-btn")
@@ -788,20 +692,16 @@ document.querySelectorAll(".nav-btn")
 
         document
         .querySelectorAll(".nav-btn")
-        .forEach(b=>{
-
-
-            b.classList.remove("active");
-
-
-        });
+        .forEach(b=>
+            b.classList.remove("active")
+        );
 
 
 
         btn.classList.add("active");
 
 
-    };
+    }
 
 
 });
@@ -815,12 +715,14 @@ document.querySelectorAll(".nav-btn")
 
 
 /* ==========================
-   BOUTONS EXERCICES
+   EXEMPLE VERIFICATION
 ========================== */
+
 
 
 const verifier =
 document.getElementById("verifier");
+
 
 
 const suivant =
@@ -830,11 +732,7 @@ document.getElementById("suivant");
 
 
 
-if(verifier){
-
-
 verifier.onclick=function(){
-
 
 
     ajouterXP(10);
@@ -848,18 +746,11 @@ verifier.onclick=function(){
 };
 
 
-}
 
 
-
-
-
-
-if(suivant){
 
 
 suivant.onclick=function(){
-
 
 
     ajouterXP(5);
@@ -869,11 +760,7 @@ suivant.onclick=function(){
     snakeMessage("debut");
 
 
-
 };
-
-
-}
 
 
 
@@ -903,38 +790,34 @@ montrerNavigation();
 
 
 
-
 /* ==========================
-   MESSAGE DE RETOUR
+   MESSAGE ALEATOIRE AU RETOUR
 ========================== */
 
 
 setTimeout(()=>{
 
 
-
-    if(pseudo && messageSnake){
-
+    if(pseudo){
 
 
         const messages=[
 
 
         `Bienvenue ${pseudo} 🐍`,
+        
+
+        `Prêt pour un nouvel exercice ${pseudo} ?`,
 
 
-        `Prêt pour coder aujourd'hui ${pseudo} ? 😎`,
-
-
-        `Le Python t'attend ${pseudo} 🔥`
+        `Le Python t'attend ${pseudo} 😎`
 
 
         ];
 
 
 
-        messageSnake.innerHTML =
-
+        messageSnake.innerHTML=
         messages[
             Math.floor(
                 Math.random()*messages.length
@@ -942,12 +825,8 @@ setTimeout(()=>{
         ];
 
 
-
     }
 
 
 
 },3000);
-
-
-}
