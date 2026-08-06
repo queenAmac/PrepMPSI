@@ -1,24 +1,24 @@
-/* PrepMPSI - Refactored style.css (with close button + overlay)
-   Variables, accessibility, reduced-motion, mobile perf
+/* PrepMPSI - style.css
+   Refactored full stylesheet: header/logo styles, unified primary buttons,
+   modal styles, responsive aside/menu behavior, and general layout.
 */
 
 :root{
   --bg-dark: #050505;
-  --bg-gradient-1: #312e81;
-  --bg-gradient-2: #1e40af;
-  --card-glass: rgba(255,255,255,0.08);
-  --card-glass-strong: rgba(255,255,255,0.15);
+  --bg-gradient-1: #0f1a33; /* darker bluish */
+  --bg-gradient-2: #1a2a48;
+  --card-glass: rgba(255,255,255,0.06);
+  --card-glass-strong: rgba(255,255,255,0.12);
   --glass-contrast: rgba(255,255,255,0.07);
-  --accent-from: #6366f1;
-  --accent-to: #c084fc;
-  --accent-alt: #a855f7;
+  --accent-from: #3b82f6; /* blue */
+  --accent-to: #60a5fa;   /* lighter blue */
   --muted-text: #bdbdbd;
-  --text: #ffffff;
+  --text: #eaf6ff;
 
   --space-lg: 2.5rem;
-  --radius-lg: 1.75rem;
+  --radius-lg: 1.25rem;
 
-  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --base-font-size: 16px;
 
   --bp-mobile: 48rem;
@@ -38,9 +38,10 @@ body {
   background-image:
     radial-gradient(circle at top left, var(--bg-gradient-1), transparent 35%),
     radial-gradient(circle at bottom right, var(--bg-gradient-2), transparent 35%),
-    linear-gradient(135deg, var(--bg-dark), #111827);
+    linear-gradient(135deg, var(--bg-dark), #0b1220);
   background-attachment: fixed;
   background-repeat: no-repeat;
+  color: var(--text);
 }
 
 /* Header */
@@ -48,23 +49,27 @@ header {
   height: 5.625rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1.25rem 2.5rem;
+  padding: 1.25rem 2rem;
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(255,255,255,0.08);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--card-glass-strong);
+  background: linear-gradient(90deg, rgba(7,12,25,0.85), rgba(17,24,39,0.85));
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
 }
 
-.brand h1 { font-size: 2.125rem; margin: 0; cursor: default; }
-.brand p { margin: 0; color: var(--muted-text); }
+/* Brand */
+.brand-link { display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit; }
+.logo-img { width: 220px; height: auto; display:block; }
+.brand-text { display:none; }
+.brand h1 { font-size: 1.75rem; margin: 0; font-weight:700; }
+.brand p { margin: 0; color: var(--muted-text); font-size:0.95rem; }
 
-.header-actions { display:flex; align-items:center; gap:1rem; }
-.header-xp { font-weight:600; font-size: 1.125rem; }
+.header-actions { margin-left: auto; display:flex; align-items:center; gap:12px; }
+.header-xp { color: var(--text); font-weight:600; }
 
+/* Mobile menu button */
 #menuMobile {
   display: none;
   border: none;
@@ -82,7 +87,6 @@ header {
   inset: 0;
   background: rgba(0,0,0,0.45);
   z-index: 90;
-  opacity: 1;
 }
 #overlay.hidden { display: none; }
 
@@ -90,21 +94,22 @@ header {
 aside {
   width: 17.5rem;
   padding: 1.5625rem;
-  background: var(--card-glass);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-right: 1px solid var(--card-glass-strong);
   z-index: 100;
+  position: relative;
 }
 
-aside h2 { margin-bottom: 1.5625rem; }
+aside h2 { margin-bottom: 1.25rem; }
 
 /* Close button inside aside (mobile) */
 #closeMenu {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  background: none;
+  background: transparent;
   border: none;
   color: var(--text);
   font-size: 1.125rem;
@@ -123,15 +128,17 @@ aside h2 { margin-bottom: 1.5625rem; }
   border:none;
   border-radius:1.125rem;
   color:var(--text);
-  background: rgba(255,255,255,0.09);
+  background: rgba(255,255,255,0.02);
   cursor:pointer;
-  transition: transform .2s ease, background .2s ease;
+  transition: transform .18s ease, background .18s ease;
   text-align:left;
 }
 
+.chapitres button:hover { transform: translateY(-3px); background: rgba(255,255,255,0.03); }
+
 /* Progression */
-.progression { margin-top: 2.1875rem; padding:1.25rem; border-radius: var(--radius-lg); background: rgba(255,255,255,0.07); }
-.xp-bar { width:100%; height:0.75rem; margin:0.9375rem 0; overflow:hidden; border-radius:1.25rem; background: rgba(255,255,255,0.15); }
+.progression { margin-top: 2rem; padding:1rem; border-radius: var(--radius-lg); background: rgba(255,255,255,0.02); }
+.xp-bar { width:100%; height:0.75rem; margin:0.8rem 0; overflow:hidden; border-radius:1.25rem; background: rgba(255,255,255,0.03); }
 #xpProgress, #xpProgressProfil { height:100%; width:0%; border-radius:1.25rem; background: linear-gradient(90deg, var(--accent-from), var(--accent-to)); transition: width .6s ease; }
 
 /* Main */
@@ -140,22 +147,62 @@ h2 { font-size:2.375rem; margin:0 0 0.5rem 0; }
 #compteur { margin-top:0.625rem; margin-bottom:1.875rem; color:var(--muted-text); }
 
 /* Card */
-.card { padding:1.75rem; margin-bottom:2.1875rem; border-radius:1.875rem; background: var(--card-glass); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid var(--card-glass-strong); }
+.card { padding:1.75rem; margin-bottom:2.1875rem; border-radius:1.625rem; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border: 1px solid rgba(255,255,255,0.03); }
 #enonce { font-size:1.125rem; line-height:1.6; }
 
 textarea {
   width:100%; height:14.375rem; padding:1.375rem; resize:none; border:none; outline:none;
-  border-radius:1.75rem; background:#050505; color:var(--text); font-size:1rem;
+  border-radius:1.5rem; background:#050505; color:var(--text); font-size:1rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
 }
 
-textarea:focus-visible { outline:none; box-shadow: 0 0 0 3px rgba(99,102,241,0.18); }
+textarea:focus-visible { outline:none; box-shadow: 0 0 0 3px rgba(59,130,246,0.14); }
 
-/* Buttons */
+/* Buttons - primary unified style */
+.btn--primary{
+  background: linear-gradient(90deg, var(--accent-from), var(--accent-to));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(59,130,246,0.14), inset 0 -2px 0 rgba(255,255,255,0.06);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease, opacity .12s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 18px 40px rgba(59,130,246,0.16); }
+.btn--primary:focus-visible { outline: 3px solid rgba(99,102,241,0.18); outline-offset: 2px; }
+.btn--primary[disabled] { opacity: .6; cursor: default; transform: none; }
+
+/* Apply same look to existing elements */
+.user-btn,
+#closeMenu,
+.buttons button { /* reuse primary look for header user btn, aside close and main action buttons */
+  background: linear-gradient(90deg, var(--accent-from), var(--accent-to));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 700;
+  box-shadow: 0 10px 18px rgba(59,130,246,0.12), inset 0 -2px 0 rgba(255,255,255,0.03);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* specific sizing for close button */
+#closeMenu { padding: 8px; width:40px; height:40px; border-radius:999px; justify-content:center; }
+
 .buttons { display:flex; gap:1.25rem; margin-top:2.1875rem; margin-bottom:2.1875rem; }
-.buttons button { flex:1; padding:1rem; border:none; border-radius:1.375rem; color:var(--text); cursor:pointer; font-size:1rem; background: linear-gradient(135deg, var(--accent-from), var(--accent-alt)); transition: transform .25s ease, box-shadow .2s ease; }
-.buttons button:hover, .buttons button:focus-visible { transform: translateY(-0.3125rem); box-shadow: 0 10px 30px rgba(99,102,241,0.12); }
+.buttons button { flex:1; padding:1rem; border-radius:1.25rem; font-size:1rem; }
+.buttons button:hover, .buttons button:focus-visible { transform: translateY(-0.3125rem); box-shadow: 0 10px 30px rgba(59,130,246,0.12); }
 
 /* Output */
 .output { min-height:6.875rem; margin-top:0.9375rem; display:flex; align-items:flex-start; color:var(--text); }
@@ -166,28 +213,44 @@ textarea:focus-visible { outline:none; box-shadow: 0 0 0 3px rgba(99,102,241,0.1
 /* Bottom nav (mobile) */
 .bottom-nav { display:none; }
 
+/* Modal */
+.modal {
+  background: linear-gradient(180deg, rgba(7,12,25,0.96), rgba(10,18,30,0.98));
+  color: var(--text);
+  border-radius: 12px;
+  padding: 18px;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 30px 60px rgba(2,6,23,0.6);
+}
+
+/* small helpers */
+button:focus { outline: none; }
+:focus-visible { box-shadow: 0 0 0 3px rgba(99,102,241,0.18); border-radius: 0.25rem; }
+
 /* Responsive */
 @media (max-width: var(--bp-mobile)) {
   body { padding-bottom: 6.25rem; }
-  header { height: 4.6875rem; padding: 0.9375rem 1.25rem; }
+  header { height: 4.6875rem; padding: 0.9375rem 1rem; }
+  .logo-img { width: 160px; }
   .brand h1 { font-size: 1.5625rem; }
   #menuMobile { display:block; }
   .layout { display:block; }
   aside {
     position: fixed; top:0; left:-18.75rem; height:100vh; width:17.5rem; z-index:100; transition: left .35s ease;
   }
-  aside.active { left:0; }
-  aside.active #closeMenu { display:block; }
+  aside.open { left:0; }
+  aside.open #closeMenu { display:block; }
   #overlay.hidden { display:none; }
-  main { padding:1.5625rem; }
+  main { padding:1.25rem; }
   h2 { font-size:1.875rem; }
-  .card { padding:1.375rem; }
+  .card { padding:1.25rem; }
   textarea { height:11.25rem; }
   .buttons { flex-direction: column; }
   .buttons button { width:100%; }
   .bottom-nav {
-    display:flex; position:fixed; left:0.9375rem; right:0.9375rem; bottom:0.9375rem; height:4.6875rem; border-radius:1.75rem; justify-content:space-around; align-items:center; z-index:200;
-    background: rgba(255,255,255,0.12); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); border: 1px solid rgba(255,255,255,0.2);
+    display:flex; position:fixed; left:0.9375rem; right:0.9375rem; bottom:0.9375rem; height:4.6875rem; border-radius:1.25rem; justify-content:space-around; align-items:center; z-index:200;
+    background: rgba(255,255,255,0.06); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.06);
     transition: transform .35s ease, opacity .35s ease;
   }
   .bottom-nav.hide { transform: translateY(8.125rem); opacity:0; }
@@ -197,32 +260,16 @@ textarea:focus-visible { outline:none; box-shadow: 0 0 0 3px rgba(99,102,241,0.1
 }
 
 /* Close button hover/focus */
-#closeMenu:hover, #closeMenu:focus-visible { background: rgba(255,255,255,0.06); outline: none; box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
+#closeMenu:hover, #closeMenu:focus-visible { background: rgba(255,255,255,0.04); box-shadow: 0 0 0 3px rgba(99,102,241,0.12); }
 
 /* Profile personal block */
 .profile-personal { margin-top:1rem; display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
-.user-btn { background: transparent; color: var(--text); border: 1px solid rgba(255,255,255,0.06); padding: 0.5rem 0.75rem; border-radius: 0.5rem; cursor:pointer; }
-.user-btn:hover, .user-btn:focus-visible { box-shadow: 0 6px 18px rgba(0,0,0,0.4); }
+.user-btn { /* fallback if not updated to .btn--primary */
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+}
 
-/* small helpers */
-button:focus { outline: none; }
-:focus-visible { box-shadow: 0 0 0 3px rgba(99,102,241,0.18); border-radius: 0.25rem; }
-<div class="brand">
-  <a href="/" class="brand-link" aria-label="Accueil PrepMPSI">
-    <!-- Logo SVG (remplaçable par assets/logo.svg si tu préfères) -->
-    <svg class="logo-img" viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-      <!-- silhouette stylisée de cygne -->
-      <path d="M6 26c6-8 18-10 28-8 6 1 10 5 18 6 4 0 8-1 12-4 2-1 6-4 9-6 2-1 3-3 5-4 2-1 7-2 10-1" fill="none" stroke="#cfe8ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- texte PrepMPSI -->
-      <g transform="translate(42,26)">
-        <text x="0" y="0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial" font-size="18" font-weight="700" fill="#c9e6ff">Prep</text>
-        <text x="64" y="0" font-family="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial" font-size="18" font-weight="700" fill="#8ec8ff">MPSI</text>
-      </g>
-    </svg>
+/* Debug / expose minimal utility classes */
+.center { display:flex; align-items:center; justify-content:center; }
 
-    <div class="brand-text">
-      <h1 id="logo" aria-hidden="true">PrepMPSI</h1>
-      <p id="subtitle">Préparation Terminale → MPSI</p>
-    </div>
-  </a>
-</div>
+/* End of stylesheet */
