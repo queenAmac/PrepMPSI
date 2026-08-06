@@ -4,6 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>PrepMPSI</title>
@@ -18,53 +19,86 @@
 
 <header>
 
-    <button id="menuMobile">
-        ☰
-    </button>
+
+<button id="menuMobile">
+☰
+</button>
 
 
-    <div>
-        <h1>🐍 PrepMPSI</h1>
-        <p>Préparation Terminale → MPSI</p>
-    </div>
+<div>
+
+<h1>🐍 PrepMPSI</h1>
+
+<p>
+Terminale → MPSI
+</p>
+
+</div>
+
+
+<div class="header-xp">
+
+⭐ <span id="xp">0</span> XP
+
+</div>
 
 
 </header>
 
 
 
-<div class="container">
+
+
+<div class="layout">
+
+
+
+<!-- MENU CHAPITRES ORDINATEUR -->
 
 
 <aside id="menuChapitre">
 
 
-<h2>📚 Chapitres</h2>
+<h2>
+📚 Chapitres
+</h2>
+
+
+
+<div class="chapitres">
 
 
 <button>Variables</button>
+
 <button>Types</button>
+
 <button>Affectations</button>
+
 <button>Opérations</button>
+
 <button>Conditions</button>
+
 <button>Boucles</button>
+
 <button>Fonctions</button>
+
 <button>Listes</button>
+
 <button>Dictionnaires</button>
+
 <button>Algorithmique</button>
+
+
+</div>
 
 
 
 <div class="progression">
 
 
-<h3>🏆 Progression</h3>
-
-
-<p>
-XP :
-<span id="xp">0</span>
-</p>
+<h3>
+🏆 Progression
+</h3>
 
 
 <p>
@@ -72,6 +106,18 @@ Niveau :
 <span id="niveau">
 Débutant
 </span>
+</p>
+
+
+<div class="xp-bar">
+
+<div id="xpProgress"></div>
+
+</div>
+
+
+<p id="xpText">
+0 / 100 XP
 </p>
 
 
@@ -85,7 +131,17 @@ Débutant
 
 
 
+
+
+<!-- CONTENU PRINCIPAL -->
+
+
 <main>
+
+
+
+<section id="pageAccueil">
+
 
 
 <h2 id="titre">
@@ -94,15 +150,28 @@ Variables
 
 
 <p id="compteur">
-Exercice 1 / 20
+Exercice 1 / 10
 </p>
 
 
-<div id="enonce">
 
-Chargement de l'exercice...
+<div class="card exercice">
+
+
+<h3>
+Énoncé
+</h3>
+
+
+<p id="enonce">
+
+Chargement...
+
+</p>
+
 
 </div>
+
 
 
 
@@ -115,22 +184,25 @@ placeholder="Écris ton code Python ici...">
 
 
 
+
+
 <div class="buttons">
 
 
-<button id="executer">
-▶ Exécuter
-</button>
-
-
 <button id="verifier">
+
 ✓ Vérifier
+
 </button>
+
 
 
 <button id="suivant">
+
 ➡ Suivant
+
 </button>
+
 
 
 </div>
@@ -138,11 +210,114 @@ placeholder="Écris ton code Python ici...">
 
 
 
-<div class="output">
+
+<div class="card output">
 
 Sortie :
 
 </div>
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+<!-- PAGE COURS -->
+
+
+<section id="pageCours" class="hidden">
+
+
+<h2>
+📚 Cours
+</h2>
+
+
+<p>
+Choisis un chapitre
+</p>
+
+
+
+<div id="listeCours">
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- PAGE PROFIL -->
+
+
+<section id="pageProfil" class="hidden">
+
+
+<h2>
+🏆 Profil
+</h2>
+
+
+
+<div class="card profil-card">
+
+
+<h3>
+Progression
+</h3>
+
+
+<p>
+XP :
+<span id="xpProfil">
+0
+</span>
+</p>
+
+
+<p>
+Niveau :
+<span id="niveauProfil">
+Débutant
+</span>
+</p>
+
+
+
+<div class="xp-bar">
+
+<div id="xpProgressProfil"></div>
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
 
 
 
@@ -155,12 +330,21 @@ Sortie :
 
 
 
+
+
+
+
+
+<!-- NAVIGATION MOBILE -->
+
+
 <nav class="bottom-nav">
 
 
-<button id="accueil">
+<button id="accueil" class="nav-btn active">
 
 🏠
+
 <span>
 Accueil
 </span>
@@ -169,9 +353,11 @@ Accueil
 
 
 
-<button id="cours">
+
+<button id="cours" class="nav-btn">
 
 📚
+
 <span>
 Cours
 </span>
@@ -180,14 +366,18 @@ Cours
 
 
 
-<button id="profil">
+
+
+<button id="profil" class="nav-btn">
 
 🏆
+
 <span>
-XP
+Profil
 </span>
 
 </button>
+
 
 
 </nav>
