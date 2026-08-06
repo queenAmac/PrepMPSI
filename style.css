@@ -1924,22 +1924,33 @@ header p{
 
 #menuMobile{
 
-
     display:block;
-
-
 
     position:absolute;
 
+    left:20px;
 
-    right:20px;
+    top:22px;
 
+    width:45px;
 
-    top:55px;
+    height:45px;
 
+    border-radius:15px;
+
+    background:
+    rgba(255,255,255,.12);
+
+    backdrop-filter:blur(20px);
+
+    border:
+    1px solid rgba(255,255,255,.2);
+
+    color:white;
+
+    font-size:22px;
 
 }
-
 
 
 
