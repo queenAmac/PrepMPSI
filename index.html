@@ -17,30 +17,34 @@
 <body>
 
 
-<!-- ==========================
-POPUP PREMIERE CONNEXION
-========================== -->
+<!-- POPUP PREMIERE CONNEXION -->
 
 <div id="pseudoPopup" class="popup">
 
-    <div class="popup-card">
 
-        <h2>🐍 Bienvenue sur PrepMPSI</h2>
-
-        <p>
-            Comment dois-je t'appeler ?
-        </p>
-
-        <input 
-        id="pseudoInput"
-        placeholder="Ton prénom ou pseudo">
+<div class="popup-card">
 
 
-        <button id="startButton">
-            Commencer 🚀
-        </button>
+<h2>🐍 Bienvenue sur PrepMPSI</h2>
 
-    </div>
+
+<p>
+Comment dois-je t'appeler ?
+</p>
+
+
+<input 
+id="pseudoInput"
+placeholder="Ton prénom ou pseudo">
+
+
+<button id="startButton">
+Commencer 🚀
+</button>
+
+
+</div>
+
 
 </div>
 
@@ -48,9 +52,10 @@ POPUP PREMIERE CONNEXION
 
 
 
-<!-- ==========================
-HEADER
-========================== -->
+
+
+
+<!-- HEADER -->
 
 
 <header>
@@ -65,22 +70,14 @@ HEADER
 <div class="logo-zone">
 
 
-<div class="logo">
-🐍
-</div>
-
-
-<div>
-
 <h1>
-PrepMPSI
+🐍 PrepMPSI
 </h1>
 
-<p>
-Ton assistant de prépa
-</p>
 
-</div>
+<p>
+Terminale → MPSI
+</p>
 
 
 </div>
@@ -95,6 +92,7 @@ Ton assistant de prépa
 </div>
 
 
+
 </header>
 
 
@@ -102,11 +100,6 @@ Ton assistant de prépa
 
 
 
-
-
-<!-- ==========================
-STRUCTURE
-========================== -->
 
 
 <div class="layout">
@@ -125,8 +118,9 @@ STRUCTURE
 
 
 <h2>
-Chapitres
+📚 Chapitres
 </h2>
+
 
 
 <button id="fermerMenu">
@@ -139,16 +133,27 @@ Chapitres
 
 
 
+
 <div class="chapitres">
 
 
 <button>
-Python débutant
+Variables
 </button>
 
 
 <button>
-Variables
+Types
+</button>
+
+
+<button>
+Affectations
+</button>
+
+
+<button>
+Conditions
 </button>
 
 
@@ -163,7 +168,12 @@ Fonctions
 
 
 <button>
-Classes
+Listes
+</button>
+
+
+<button>
+Algorithmique
 </button>
 
 
@@ -173,12 +183,22 @@ Classes
 
 
 
+
 <div class="progression">
 
 
 <h3>
-Progression
+🏆 Progression
 </h3>
+
+
+<p>
+Niveau :
+<span id="niveau">
+Débutant
+</span>
+</p>
+
 
 
 <div class="xp-bar">
@@ -190,14 +210,15 @@ Progression
 
 
 <p>
-<span id="niveau">
-🐣 Débutant
+<span id="xpText">
+0 XP
 </span>
-
 </p>
 
 
+
 </div>
+
 
 
 </aside>
@@ -209,13 +230,11 @@ Progression
 
 
 
-<!-- ==========================
-CONTENU PRINCIPAL
-========================== -->
+
+<!-- CONTENU -->
 
 
 <main>
-
 
 
 
@@ -227,11 +246,18 @@ CONTENU PRINCIPAL
 
 
 
+
+
+<!-- ASSISTANT SERPENT -->
+
+
 <div class="assistant">
 
 
 <div class="snake">
+
 🐍
+
 </div>
 
 
@@ -246,7 +272,7 @@ PrepSnake
 
 <p id="messageSnake">
 
-Bienvenue futur ingénieur 🚀
+Salut ! Prêt à coder ?
 
 </p>
 
@@ -261,12 +287,86 @@ Bienvenue futur ingénieur 🚀
 
 
 
+
+
+<h2 id="titre">
+Variables
+</h2>
+
+
+
+<p id="compteur">
+Exercice 1 / 10
+</p>
+
+
+
+
+
+
+
+
+<div id="enonce">
+
+
+Chargement...
+
+</div>
+
+
+
+
+
+
+
+
+<textarea 
+id="code"
+placeholder="Écris ton code Python ici...">
+
+</textarea>
+
+
+
+
+
+
+
+
+<div class="buttons">
+
+
+<button id="verifier">
+
+✓ Vérifier
+
+</button>
+
+
+
+<button id="suivant">
+
+➡ Suivant
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+
 <div class="assistant-actions">
 
 
 <button id="indice">
 
-💡 Indice
+💡 Demander un indice au serpent
 
 </button>
 
@@ -279,18 +379,44 @@ Bienvenue futur ingénieur 🚀
 </button>
 
 
-
 </div>
+
+
+
+
+
 
 
 
 <div id="aideTexte">
 
+
 </div>
 
 
 
+
+
+
+
+<div class="output">
+
+
+Sortie :
+
+</div>
+
+
+
+
+
+
+
 </section>
+
+
+
+
 
 
 
@@ -306,77 +432,22 @@ Bienvenue futur ingénieur 🚀
 <section id="pageCours" class="hidden">
 
 
-<h2 id="titre">
-
-Exercice Python
-
+<h2>
+📚 Cours
 </h2>
 
 
-<p id="compteur">
 
-Question 1 / 10
-
-</p>
-
-
-
-
-<div id="enonce">
-
-
-Crée une variable age contenant la valeur 16.
+<div id="listeCours">
 
 </div>
-
-
-
-
-
-<textarea id="code">
-
-# écris ton code ici
-
-</textarea>
-
-
-
-
-
-<div class="buttons">
-
-
-<button id="verifier">
-
-✅ Vérifier
-
-</button>
-
-
-
-<button id="suivant">
-
-➡️ Suivant
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-<div class="output" id="output">
-
-Résultat :
-
-</div>
-
 
 
 </section>
+
+
+
+
 
 
 
@@ -392,65 +463,49 @@ Résultat :
 <section id="pageProfil" class="hidden">
 
 
-<div class="profil-card">
-
 
 <h2>
-
-Profil
-
+🏆 Profil
 </h2>
 
 
+
+<div class="profil-card">
+
+
+
+<h3>
+👤 <span id="pseudoProfil">
+Utilisateur
+</span>
+</h3>
+
+
+
 <p>
-
-Pseudo :
-
-<strong id="pseudoProfil">
-
-</strong>
-
-
-</p>
-
-
-
-
-<p>
-
 XP :
-
 <span id="xpProfil">
-
 0
-
 </span>
-
 </p>
-
 
 
 
 <p>
-
 Niveau :
-
 <span id="niveauProfil">
-
-🐣 Débutant
-
+Débutant
 </span>
-
 </p>
-
 
 
 
 <button id="changerPseudo">
 
-Modifier pseudo
+✏️ Modifier mon pseudo
 
 </button>
+
 
 
 </div>
@@ -458,6 +513,9 @@ Modifier pseudo
 
 
 </section>
+
+
+
 
 
 
@@ -476,16 +534,13 @@ Modifier pseudo
 
 
 
-<!-- ==========================
-BARRE BAS IPHONE
-========================== -->
+<!-- BARRE MOBILE -->
 
 
 <nav class="bottom-nav">
 
 
-<button class="nav-btn active" id="accueil">
-
+<button id="accueil" class="nav-btn active">
 
 🏠
 
@@ -493,14 +548,11 @@ BARRE BAS IPHONE
 Accueil
 </span>
 
-
 </button>
 
 
 
-
-<button class="nav-btn" id="cours">
-
+<button id="cours" class="nav-btn">
 
 📚
 
@@ -508,24 +560,19 @@ Accueil
 Cours
 </span>
 
-
 </button>
 
 
 
+<button id="profil" class="nav-btn">
 
-<button class="nav-btn" id="profil">
-
-
-👤
+🏆
 
 <span>
 Profil
 </span>
 
-
 </button>
-
 
 
 </nav>
@@ -536,10 +583,13 @@ Profil
 
 
 
+
+<script src="data/exercices.js"></script>
+
 <script src="app.js"></script>
 
 
-</body>
 
+</body>
 
 </html>
