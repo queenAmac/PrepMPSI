@@ -1,6 +1,6 @@
 /* ==========================
    PREPMPSI 2.0 - APP.JS
-   ========================== */
+========================== */
 
 
 /* ==========================
@@ -16,21 +16,16 @@ let pseudo = localStorage.getItem("pseudo");
 
 
 const pseudoPopup = document.getElementById("pseudoPopup");
-
 const pseudoInput = document.getElementById("pseudoInput");
-
 const startButton = document.getElementById("startButton");
 
 const pseudoProfil = document.getElementById("pseudoProfil");
 
 const xpElement = document.getElementById("xp");
-
 const xpProfil = document.getElementById("xpProfil");
-
 const xpText = document.getElementById("xpText");
 
 const niveau = document.getElementById("niveau");
-
 const niveauProfil = document.getElementById("niveauProfil");
 
 const xpProgress = document.getElementById("xpProgress");
@@ -42,11 +37,15 @@ const messageSnake = document.getElementById("messageSnake");
 
 
 /* ==========================
-   PSEUDO
+   UTILISATEUR
 ========================== */
 
 
 function chargerUtilisateur(){
+
+
+    if(!pseudoPopup) return;
+
 
 
     if(pseudo){
@@ -56,7 +55,6 @@ function chargerUtilisateur(){
 
 
     }
-
 
     else{
 
@@ -77,23 +75,33 @@ function chargerUtilisateur(){
 
 
 
-startButton.addEventListener("click", ()=>{
 
 
-    let valeur = pseudoInput.value.trim();
+if(startButton){
 
 
-    if(valeur === ""){
+startButton.onclick=function(){
+
+
+
+    let valeur=pseudoInput.value.trim();
+
+
+
+    if(valeur===""){
+
 
         alert("Entre un pseudo 🐍");
 
+
         return;
+
 
     }
 
 
 
-    pseudo = valeur;
+    pseudo=valeur;
 
 
 
@@ -108,17 +116,16 @@ startButton.addEventListener("click", ()=>{
 
 
 
-    pseudoProfil.textContent=pseudo;
+    afficherPseudo();
 
 
 
-    messageSnake.innerHTML =
-    `Coucou ${pseudo} 👋🐍<br>
-    On reprend où on en était ?`;
+};
 
 
 
-});
+}
+
 
 
 
@@ -128,25 +135,31 @@ startButton.addEventListener("click", ()=>{
 function afficherPseudo(){
 
 
-    if(pseudo){
+    if(!pseudo) return;
 
+
+
+    if(pseudoProfil){
 
         pseudoProfil.textContent=pseudo;
 
+    }
+
+
+
+    if(messageSnake){
 
 
         messageSnake.innerHTML=
 
+        `Coucou ${pseudo} 👋🐍<br>
+        On reprend où on en était ?`;
 
-        `Coucou ${pseudo} 👋
-        On reprend là où on s'était arrêté ? 🐍`;
 
     }
 
 
 }
-
-
 
 
 
@@ -163,7 +176,6 @@ function ajouterXP(nombre){
 
 
     xp+=nombre;
-
 
 
     localStorage.setItem(
@@ -183,17 +195,20 @@ function ajouterXP(nombre){
 
 
 
-
 function actualiserXP(){
 
 
-    xpElement.textContent=xp;
+
+    if(xpElement)
+        xpElement.textContent=xp;
 
 
-    xpProfil.textContent=xp;
+    if(xpProfil)
+        xpProfil.textContent=xp;
 
 
-    xpText.textContent=xp+" XP";
+    if(xpText)
+        xpText.textContent=xp+" XP";
 
 
 
@@ -209,7 +224,6 @@ function actualiserXP(){
 
     }
 
-
     else if(xp<300){
 
 
@@ -218,7 +232,6 @@ function actualiserXP(){
 
     }
 
-
     else if(xp<700){
 
 
@@ -226,7 +239,6 @@ function actualiserXP(){
 
 
     }
-
 
     else{
 
@@ -238,43 +250,32 @@ function actualiserXP(){
 
 
 
-
-    niveau.textContent=niveauTexte;
-
-
-    niveauProfil.textContent=niveauTexte;
+    if(niveau)
+        niveau.textContent=niveauTexte;
 
 
-
-
-
-    let progression=(xp%100);
+    if(niveauProfil)
+        niveauProfil.textContent=niveauTexte;
 
 
 
-    xpProgress.style.width=
-    progression+"%";
+    if(xpProgress){
 
 
-
-}
-
-
+        xpProgress.style.width=
+        (xp%100)+"%";
 
 
-
-
-
-
-
-
-/* ==========================
-   MESSAGES PREPSNAKE
+    }/* ==========================
+   PREPSNAKE ASSISTANT
 ========================== */
 
 
-
 function snakeMessage(type){
+
+
+    if(!messageSnake) return;
+
 
 
     let nom=pseudo || "champion";
@@ -284,52 +285,47 @@ function snakeMessage(type){
     const messages={
 
 
-
         succes:
 
-        `YES ${nom} 🐍🔥
+        `YES ${nom} 🐍🔥<br>
         Ton code fonctionne ! +10 XP`,
 
 
 
         erreur:
 
-        `Pas grave ${nom} 😌
-        Même les développeurs font des bugs.
-        On cherche ensemble ?`,
-
+        `Pas grave ${nom} 😌<br>
+        Les bugs font partie de l'apprentissage.`,
 
 
 
         debut:
 
-        `Coucou ${nom} 👋
+        `Coucou ${nom} 👋🐍<br>
         On reprend où on en était ?`,
-
 
 
 
         indice:
 
-        `Petit indice ${nom} 💡 :
-        regarde bien la structure du problème 😉`,
+        `Petit indice ${nom} 💡<br>
+        Regarde la structure avant de chercher la réponse.`,
 
 
 
         aide:
 
-        `Je suis ton serpent assistant 🐍
-        Je peux t'aider à réfléchir,
-        mais je ne vais pas manger l'exercice à ta place 😄`
-
+        `Je suis ton serpent assistant 🐍<br>
+        Je t'aide à réfléchir, pas à faire l'exercice à ta place 😉`
 
 
     };
 
 
 
-    messageSnake.innerHTML=
-    messages[type];
+    messageSnake.innerHTML =
+    messages[type] || messages.debut;
+
 
 }
 
@@ -346,15 +342,16 @@ function snakeMessage(type){
 ========================== */
 
 
-const boutonIndice=
+const boutonIndice =
 document.getElementById("indice");
 
 
-const boutonIA=
+const boutonIA =
 document.getElementById("aideIA");
 
 
 
+if(boutonIndice){
 
 
 boutonIndice.onclick=function(){
@@ -366,8 +363,13 @@ boutonIndice.onclick=function(){
 };
 
 
+}
 
 
+
+
+
+if(boutonIA){
 
 
 boutonIA.onclick=function(){
@@ -379,56 +381,70 @@ boutonIA.onclick=function(){
 };
 
 
+}
+
+
+
+
+
 
 
 
 
 /* ==========================
-   NAVIGATION
+   NAVIGATION MOBILE / APP
 ========================== */
 
 
-const accueil=
-document.getElementById("accueil");
+const pages={
 
 
-const cours=
-document.getElementById("cours");
-
-
-const profil=
-document.getElementById("profil");
+    accueil:
+    document.getElementById("pageAccueil"),
 
 
 
-const pageAccueil=
-document.getElementById("pageAccueil");
+    cours:
+    document.getElementById("pageCours"),
 
 
-const pageCours=
-document.getElementById("pageCours");
 
+    profil:
+    document.getElementById("pageProfil")
 
-const pageProfil=
-document.getElementById("pageProfil");
+};
 
 
 
 
 
-function changerPage(page){
 
-
-    pageAccueil.classList.add("hidden");
-
-    pageCours.classList.add("hidden");
-
-    pageProfil.classList.add("hidden");
+function ouvrirPage(nom){
 
 
 
-    page.classList.remove("hidden");
+    Object.values(pages).forEach(page=>{
 
+
+        if(page){
+
+            page.classList.add("hidden");
+
+        }
+
+
+    });
+
+
+
+
+    if(pages[nom]){
+
+
+        pages[nom].classList.remove("hidden");
+
+
+    }
 
 
 }
@@ -436,36 +452,88 @@ function changerPage(page){
 
 
 
-accueil.onclick=function(){
 
 
-    changerPage(pageAccueil);
+
+const navAccueil =
+document.getElementById("accueil");
+
+
+const navCours =
+document.getElementById("cours");
+
+
+const navProfil =
+document.getElementById("profil");
+
+
+
+
+
+
+
+if(navAccueil){
+
+
+navAccueil.onclick=function(){
+
+
+    ouvrirPage("accueil");
 
 
 };
 
 
+}
 
 
-cours.onclick=function(){
 
 
-    changerPage(pageCours);
+
+
+if(navCours){
+
+
+navCours.onclick=function(){
+
+
+    ouvrirPage("cours");
 
 
 };
 
 
+}
 
 
-profil.onclick=function(){
 
 
-    changerPage(pageProfil);
 
 
-};/* ==========================
-   MENU MOBILE
+if(navProfil){
+
+
+navProfil.onclick=function(){
+
+
+    ouvrirPage("profil");
+
+
+};
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================
+   MENU CHAPITRES MOBILE
 ========================== */
 
 
@@ -484,6 +552,10 @@ document.getElementById("menuChapitre");
 
 
 
+
+if(menuMobile && menuChapitre){
+
+
 menuMobile.onclick=function(){
 
 
@@ -493,7 +565,13 @@ menuMobile.onclick=function(){
 };
 
 
+}
 
+
+
+
+
+if(fermerMenu && menuChapitre){
 
 
 fermerMenu.onclick=function(){
@@ -505,13 +583,11 @@ fermerMenu.onclick=function(){
 };
 
 
+}
 
 
 
 
-
-
-/* Fermer le menu en cliquant sur un chapitre */
 
 
 document.querySelectorAll(".chapitres button")
@@ -521,26 +597,23 @@ document.querySelectorAll(".chapitres button")
     bouton.onclick=function(){
 
 
-        menuChapitre.classList.remove("active");
+        if(menuChapitre){
+
+
+            menuChapitre.classList.remove("active");
+
+
+        }
+
 
 
         snakeMessage("debut");
 
 
-    }
+    };
 
 
-});
-
-
-
-
-
-
-
-
-
-/* ==========================
+});/* ==========================
    CHANGEMENT PSEUDO
 ========================== */
 
@@ -551,14 +624,17 @@ document.getElementById("changerPseudo");
 
 
 
+if(changerPseudo){
+
+
 
 changerPseudo.onclick=function(){
 
 
-    let nouveau=
-    prompt(
+
+    let nouveau = prompt(
         "🐍 Nouveau pseudo :",
-        pseudo
+        pseudo || ""
     );
 
 
@@ -566,8 +642,7 @@ changerPseudo.onclick=function(){
     if(nouveau && nouveau.trim()){
 
 
-        pseudo=
-        nouveau.trim();
+        pseudo = nouveau.trim();
 
 
 
@@ -586,6 +661,10 @@ changerPseudo.onclick=function(){
 
 
 };
+
+
+
+}
 
 
 
@@ -611,8 +690,11 @@ let timerNav;
 
 
 
-
 function cacherNavigation(){
+
+
+    if(!bottomNav) return;
+
 
 
     if(window.innerWidth<=768){
@@ -630,7 +712,13 @@ function cacherNavigation(){
 
 
 
+
+
 function montrerNavigation(){
+
+
+    if(!bottomNav) return;
+
 
 
     bottomNav.classList.remove("hide");
@@ -642,11 +730,20 @@ function montrerNavigation(){
 
 
     timerNav=setTimeout(
+
         cacherNavigation,
+
         1750
+
     );
 
+
+
 }
+
+
+
+
 
 
 
@@ -665,7 +762,7 @@ window.addEventListener(
 
 
 window.addEventListener(
-    "mousemove",
+    "touchmove",
     montrerNavigation
 );
 
@@ -678,9 +775,8 @@ window.addEventListener(
 
 
 /* ==========================
-   BOUTONS NAV ACTIFS
+   NAVIGATION ACTIVE
 ========================== */
-
 
 
 document.querySelectorAll(".nav-btn")
@@ -692,16 +788,20 @@ document.querySelectorAll(".nav-btn")
 
         document
         .querySelectorAll(".nav-btn")
-        .forEach(b=>
-            b.classList.remove("active")
-        );
+        .forEach(b=>{
+
+
+            b.classList.remove("active");
+
+
+        });
 
 
 
         btn.classList.add("active");
 
 
-    }
+    };
 
 
 });
@@ -715,14 +815,12 @@ document.querySelectorAll(".nav-btn")
 
 
 /* ==========================
-   EXEMPLE VERIFICATION
+   BOUTONS EXERCICES
 ========================== */
-
 
 
 const verifier =
 document.getElementById("verifier");
-
 
 
 const suivant =
@@ -732,7 +830,11 @@ document.getElementById("suivant");
 
 
 
+if(verifier){
+
+
 verifier.onclick=function(){
+
 
 
     ajouterXP(10);
@@ -746,11 +848,18 @@ verifier.onclick=function(){
 };
 
 
+}
 
 
+
+
+
+
+if(suivant){
 
 
 suivant.onclick=function(){
+
 
 
     ajouterXP(5);
@@ -760,7 +869,11 @@ suivant.onclick=function(){
     snakeMessage("debut");
 
 
+
 };
+
+
+}
 
 
 
@@ -790,34 +903,38 @@ montrerNavigation();
 
 
 
+
 /* ==========================
-   MESSAGE ALEATOIRE AU RETOUR
+   MESSAGE DE RETOUR
 ========================== */
 
 
 setTimeout(()=>{
 
 
-    if(pseudo){
+
+    if(pseudo && messageSnake){
+
 
 
         const messages=[
 
 
         `Bienvenue ${pseudo} 🐍`,
-        
-
-        `Prêt pour un nouvel exercice ${pseudo} ?`,
 
 
-        `Le Python t'attend ${pseudo} 😎`
+        `Prêt pour coder aujourd'hui ${pseudo} ? 😎`,
+
+
+        `Le Python t'attend ${pseudo} 🔥`
 
 
         ];
 
 
 
-        messageSnake.innerHTML=
+        messageSnake.innerHTML =
+
         messages[
             Math.floor(
                 Math.random()*messages.length
@@ -825,8 +942,12 @@ setTimeout(()=>{
         ];
 
 
+
     }
 
 
 
 },3000);
+
+
+}
