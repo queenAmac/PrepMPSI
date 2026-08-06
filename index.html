@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PrepMPSI 🐍</title>
+<title>PrepMPSI</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -18,92 +18,59 @@
 
 <header>
 
-<h1>🐍 PrepMPSI</h1>
+    <button id="menuMobile">
+        ☰
+    </button>
 
-<p>
-Préparation Terminale → MPSI
-</p>
+
+    <div>
+        <h1>🐍 PrepMPSI</h1>
+        <p>Préparation Terminale → MPSI</p>
+    </div>
+
 
 </header>
-
 
 
 
 <div class="container">
 
 
-<aside>
+<aside id="menuChapitre">
 
 
 <h2>📚 Chapitres</h2>
 
 
 <button>Variables</button>
-
 <button>Types</button>
-
 <button>Affectations</button>
-
 <button>Opérations</button>
-
 <button>Conditions</button>
-
 <button>Boucles</button>
-
 <button>Fonctions</button>
-
 <button>Listes</button>
-
 <button>Dictionnaires</button>
-
-<button>Tuples</button>
-
 <button>Algorithmique</button>
-
 
 
 
 <div class="progression">
 
+
 <h3>🏆 Progression</h3>
 
 
 <p>
-⭐ XP :
+XP :
 <span id="xp">0</span>
 </p>
 
 
 <p>
-🎓 Niveau :
+Niveau :
 <span id="niveau">
 Débutant
-</span>
-</p>
-
-
-<hr>
-
-
-<p>
-📊 Chapitre :
-<span id="chapitreProgression">
-0 %
-</span>
-</p>
-
-
-<div class="barre">
-
-<div id="barreXP"></div>
-
-</div>
-
-
-<p>
-✅ Exercices réussis :
-<span id="reussis">
-0
 </span>
 </p>
 
@@ -126,72 +93,34 @@ Variables
 </h2>
 
 
-
 <p id="compteur">
-Exercice 1
+Exercice 1 / 20
 </p>
 
 
+<div id="enonce">
 
-
-<div class="carte">
-
-
-<h3>✏️ Énoncé</h3>
-
-
-<p id="enonce">
-Chargement...
-</p>
-
+Chargement de l'exercice...
 
 </div>
 
 
 
 
-
-
-<div class="aide">
-
-
-<button id="cours">
-📚 Cours
-</button>
-
-
-<button id="indice">
-💡 Indice
-</button>
-
-
-<button id="correction">
-🧠 Correction
-</button>
-
-
-
-</div>
-
-
-
-
-<div id="aideTexte"
-class="carte">
-
-</div>
-
-
-
-
-
-<textarea
+<textarea 
 id="code"
 placeholder="Écris ton code Python ici...">
 </textarea>
 
 
 
+
+<div class="buttons">
+
+
+<button id="executer">
+▶ Exécuter
+</button>
 
 
 <button id="verifier">
@@ -200,9 +129,11 @@ placeholder="Écris ton code Python ici...">
 
 
 <button id="suivant">
-➡️ Exercice suivant
+➡ Suivant
 </button>
 
+
+</div>
 
 
 
@@ -218,8 +149,49 @@ Sortie :
 </main>
 
 
-
 </div>
+
+
+
+
+
+<nav class="bottom-nav">
+
+
+<button id="accueil">
+
+🏠
+<span>
+Accueil
+</span>
+
+</button>
+
+
+
+<button id="cours">
+
+📚
+<span>
+Cours
+</span>
+
+</button>
+
+
+
+<button id="profil">
+
+🏆
+<span>
+XP
+</span>
+
+</button>
+
+
+</nav>
+
 
 
 
