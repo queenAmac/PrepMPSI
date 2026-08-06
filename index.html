@@ -1,595 +1,294 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>PrepMPSI • PrepSnake</title>
 
-<meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PrepMPSI 🐍</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
+  <!-- =========================
+       POPUP PSEUDO
+  ========================== -->
+  <div id="pseudoPopup" class="popup">
+    <div class="popup-card">
+      <div class="popup-logo">🐍</div>
+
+      <h1>PrepMPSI</h1>
+      <p class="popup-subtitle">Ton assistant de prépa MPSI</p>
+
+      <input id="pseudoInput" type="text" placeholder="Ton prénom ou pseudo" maxlength="20">
+
+      <button id="startButton" class="primary-btn">
+        Commencer 🚀
+      </button>
+    </div>
+  </div>
+
+
+  <!-- =========================
+       BACKGROUND
+  ========================== -->
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+  <header class="topbar glass">
+
+    <button id="menuMobile" class="icon-btn mobile-only">
+      ☰
+    </button>
+
+    <div class="brand">
+      <div class="brand-logo">🐍</div>
+
+      <div class="brand-text">
+        <h1>PrepMPSI</h1>
+        <span>Terminale → MPSI</span>
+      </div>
+    </div>
+
+    <div class="topbar-right">
+      <div class="xp-pill glass">
+        ⭐ <span id="xp">0</span> XP
+      </div>
+    </div>
+  </header>
+
+
+  <!-- =========================
+       LAYOUT
+  ========================== -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar glass">
+
+      <div class="sidebar-header">
+        <h2>📚 Chapitres</h2>
+
+        <button id="closeSidebar" class="icon-btn mobile-only">
+          ✕
+        </button>
+      </div>
+
+      <nav class="chapter-list">
+        <button class="chapter-btn active" data-chapter="Variables">Variables</button>
+        <button class="chapter-btn" data-chapter="Types">Types</button>
+        <button class="chapter-btn" data-chapter="Conditions">Conditions</button>
+        <button class="chapter-btn" data-chapter="Boucles">Boucles</button>
+        <button class="chapter-btn" data-chapter="Fonctions">Fonctions</button>
+        <button class="chapter-btn" data-chapter="Listes">Listes</button>
+      </nav>
+
+      <div class="progress-card glass">
+        <div class="progress-header">
+          <span>Progression</span>
+          <span id="progressPercent">0%</span>
+        </div>
+
+        <div class="progress-track">
+          <div id="xpProgress" class="progress-fill"></div>
+        </div>
+
+        <div class="progress-level">
+          <span id="niveau">🐣 Débutant</span>
+        </div>
+      </div>
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="content">
+
+      <!-- PAGE ACCUEIL -->
+      <section id="pageAccueil" class="page">
+
+        <div class="hero glass">
+          <div class="hero-left">
+            <div class="snake-avatar">🐍</div>
 
-<!-- POPUP PREMIERE CONNEXION -->
+            <div>
+              <h2 id="welcomeTitle">Bienvenue</h2>
+              <p id="messageSnake">
+                Prêt à coder aujourd'hui ?
+              </p>
+            </div>
+          </div>
 
-<div id="pseudoPopup" class="popup">
+          <div class="hero-right">
+            <div class="streak-card glass">
+              🔥 <span id="streak">1</span> jour
+            </div>
+          </div>
+        </div>
 
 
-<div class="popup-card">
+        <div class="quick-actions">
+          <button id="goToExercises" class="quick-btn glass">
+            🚀 Continuer
+          </button>
 
+          <button id="showHint" class="quick-btn glass">
+            💡 Indice
+          </button>
 
-<h2>🐍 Bienvenue sur PrepMPSI</h2>
+          <button id="showHelp" class="quick-btn glass">
+            🐍 Aide
+          </button>
+        </div>
 
 
-<p>
-Comment dois-je t'appeler ?
-</p>
+        <div id="aideTexte" class="hint-box glass hidden"></div>
 
 
-<input 
-id="pseudoInput"
-placeholder="Ton prénom ou pseudo">
+        <div class="stats-grid">
+          <div class="stat-card glass">
+            <span class="stat-label">XP total</span>
+            <strong id="xpStat">0</strong>
+          </div>
 
+          <div class="stat-card glass">
+            <span class="stat-label">Exercices</span>
+            <strong id="exoStat">0</strong>
+          </div>
 
-<button id="startButton">
-Commencer 🚀
-</button>
+          <div class="stat-card glass">
+            <span class="stat-label">Série</span>
+            <strong id="streakStat">1</strong>
+          </div>
+        </div>
+      </section>
 
 
-</div>
+      <!-- PAGE EXERCICES -->
+      <section id="pageExercices" class="page hidden">
 
+        <div class="exercise-header">
+          <div>
+            <h2 id="titre">Variables</h2>
+            <p id="compteur">Exercice 1 / 10</p>
+          </div>
 
-</div>
+          <div class="difficulty-pill glass" id="difficulty">
+            Facile
+          </div>
+        </div>
 
 
+        <div class="exercise-card glass">
+          <div id="enonce" class="statement">
+            Chargement...
+          </div>
 
+          <div class="editor glass">
+            <div class="editor-top">
+              <span>main.py</span>
+            </div>
 
+            <textarea id="code" spellcheck="false" placeholder="Écris ton code Python ici..."></textarea>
+          </div>
 
 
+          <div class="exercise-actions">
+            <button id="verifier" class="success-btn">
+              ✓ Vérifier
+            </button>
 
+            <button id="suivant" class="glass-btn">
+              ➜ Suivant
+            </button>
+          </div>
 
-<!-- HEADER -->
 
+          <div class="assistant-row">
+            <button id="indice" class="glass-btn">💡 Indice</button>
+            <button id="aideIA" class="glass-btn">🐍 Aide PrepSnake</button>
+          </div>
 
-<header>
 
+          <div id="output" class="output glass">
+            Résultat : en attente
+          </div>
+        </div>
+      </section>
 
-<button id="menuMobile">
-☰
-</button>
 
+      <!-- PAGE PROFIL -->
+      <section id="pageProfil" class="page hidden">
 
+        <div class="profile-card glass">
 
-<div class="logo-zone">
+          <div class="profile-top">
+            <div class="profile-avatar">🐍</div>
 
+            <div>
+              <h2 id="pseudoProfil">Utilisateur</h2>
+              <p id="niveauProfil">🐣 Débutant</p>
+            </div>
+          </div>
 
-<h1>
-🐍 PrepMPSI
-</h1>
 
+          <div class="profile-stats">
+            <div class="profile-stat glass">
+              <span>XP</span>
+              <strong id="xpProfil">0</strong>
+            </div>
 
-<p>
-Terminale → MPSI
-</p>
+            <div class="profile-stat glass">
+              <span>Exercices</span>
+              <strong id="profilExo">0</strong>
+            </div>
 
+            <div class="profile-stat glass">
+              <span>Série</span>
+              <strong id="profilStreak">1</strong>
+            </div>
+          </div>
 
-</div>
 
+          <button id="changerPseudo" class="glass-btn full">
+            ✏️ Modifier mon pseudo
+          </button>
+        </div>
+      </section>
 
+    </main>
+  </div>
 
 
-<div class="header-xp">
+  <!-- BOTTOM NAV MOBILE -->
+  <nav class="bottom-nav glass">
+    <button id="navAccueil" class="nav-btn active">
+      🏠
+      <span>Accueil</span>
+    </button>
 
-⭐ <span id="xp">0</span> XP
+    <button id="navExercices" class="nav-btn">
+      📚
+      <span>Exercices</span>
+    </button>
 
-</div>
+    <button id="navProfil" class="nav-btn">
+      👤
+      <span>Profil</span>
+    </button>
+  </nav>
 
 
-
-</header>
-
-
-
-
-
-
-
-
-<div class="layout">
-
-
-
-
-
-<!-- MENU CHAPITRES -->
-
-
-<aside id="menuChapitre">
-
-
-<div class="menu-title">
-
-
-<h2>
-📚 Chapitres
-</h2>
-
-
-
-<button id="fermerMenu">
-✕
-</button>
-
-
-</div>
-
-
-
-
-
-<div class="chapitres">
-
-
-<button>
-Variables
-</button>
-
-
-<button>
-Types
-</button>
-
-
-<button>
-Affectations
-</button>
-
-
-<button>
-Conditions
-</button>
-
-
-<button>
-Boucles
-</button>
-
-
-<button>
-Fonctions
-</button>
-
-
-<button>
-Listes
-</button>
-
-
-<button>
-Algorithmique
-</button>
-
-
-</div>
-
-
-
-
-
-
-<div class="progression">
-
-
-<h3>
-🏆 Progression
-</h3>
-
-
-<p>
-Niveau :
-<span id="niveau">
-Débutant
-</span>
-</p>
-
-
-
-<div class="xp-bar">
-
-<div id="xpProgress"></div>
-
-</div>
-
-
-
-<p>
-<span id="xpText">
-0 XP
-</span>
-</p>
-
-
-
-</div>
-
-
-
-</aside>
-
-
-
-
-
-
-
-
-
-<!-- CONTENU -->
-
-
-<main>
-
-
-
-
-<!-- PAGE ACCUEIL -->
-
-
-<section id="pageAccueil">
-
-
-
-
-
-<!-- ASSISTANT SERPENT -->
-
-
-<div class="assistant">
-
-
-<div class="snake">
-
-🐍
-
-</div>
-
-
-
-<div>
-
-
-<h3>
-PrepSnake
-</h3>
-
-
-<p id="messageSnake">
-
-Salut ! Prêt à coder ?
-
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<h2 id="titre">
-Variables
-</h2>
-
-
-
-<p id="compteur">
-Exercice 1 / 10
-</p>
-
-
-
-
-
-
-
-
-<div id="enonce">
-
-
-Chargement...
-
-</div>
-
-
-
-
-
-
-
-
-<textarea 
-id="code"
-placeholder="Écris ton code Python ici...">
-
-</textarea>
-
-
-
-
-
-
-
-
-<div class="buttons">
-
-
-<button id="verifier">
-
-✓ Vérifier
-
-</button>
-
-
-
-<button id="suivant">
-
-➡ Suivant
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="assistant-actions">
-
-
-<button id="indice">
-
-💡 Demander un indice au serpent
-
-</button>
-
-
-
-<button id="aideIA">
-
-🐍 Aide PrepSnake
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div id="aideTexte">
-
-
-</div>
-
-
-
-
-
-
-
-<div class="output">
-
-
-Sortie :
-
-</div>
-
-
-
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- PAGE COURS -->
-
-
-<section id="pageCours" class="hidden">
-
-
-<h2>
-📚 Cours
-</h2>
-
-
-
-<div id="listeCours">
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- PAGE PROFIL -->
-
-
-<section id="pageProfil" class="hidden">
-
-
-
-<h2>
-🏆 Profil
-</h2>
-
-
-
-<div class="profil-card">
-
-
-
-<h3>
-👤 <span id="pseudoProfil">
-Utilisateur
-</span>
-</h3>
-
-
-
-<p>
-XP :
-<span id="xpProfil">
-0
-</span>
-</p>
-
-
-
-<p>
-Niveau :
-<span id="niveauProfil">
-Débutant
-</span>
-</p>
-
-
-
-<button id="changerPseudo">
-
-✏️ Modifier mon pseudo
-
-</button>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-</main>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- BARRE MOBILE -->
-
-
-<nav class="bottom-nav">
-
-
-<button id="accueil" class="nav-btn active">
-
-🏠
-
-<span>
-Accueil
-</span>
-
-</button>
-
-
-
-<button id="cours" class="nav-btn">
-
-📚
-
-<span>
-Cours
-</span>
-
-</button>
-
-
-
-<button id="profil" class="nav-btn">
-
-🏆
-
-<span>
-Profil
-</span>
-
-</button>
-
-
-</nav>
-
-
-
-
-
-
-
-
-<script src="data/exercices.js"></script>
-
-<script src="app.js"></script>
-
-
+  <script src="data/exercices.js"></script>
+  <script src="app.js"></script>
 
 </body>
-
 </html>
