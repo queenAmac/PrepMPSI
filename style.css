@@ -1,15 +1,51 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+
+:root{
+
+    --bg:#070b18;
+
+    --card:rgba(255,255,255,.08);
+
+    --border:rgba(255,255,255,.12);
+
+    --primary:#6366f1;
+
+    --blue:#38bdf8;
+
+    --green:#22c55e;
+
 }
+
+
+
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:"Inter",sans-serif;
+
+}
+
+
+
 
 
 html{
+
     min-height:100%;
-    background:#050505;
+
+    background:#070b18;
+
 }
+
+
+
 
 
 body{
@@ -20,17 +56,21 @@ body{
 
     overflow-x:hidden;
 
+
     background:
+
     radial-gradient(
         circle at top left,
-        #312e81,
+        #4338ca55,
         transparent 35%
     ),
+
     radial-gradient(
         circle at bottom right,
-        #1e40af,
-        transparent 35%
+        #06b6d455,
+        transparent 30%
     ),
+
     linear-gradient(
         135deg,
         #050505,
@@ -46,6 +86,10 @@ body{
 
 
 
+
+
+
+
 /* ======================
 HEADER
 ====================== */
@@ -55,64 +99,120 @@ header{
 
     height:90px;
 
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
 
     padding:20px 40px;
 
 
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:25px;
+
+
     position:sticky;
 
+
     top:0;
+
 
     z-index:20;
 
 
+
     background:
 
-    rgba(255,255,255,.08);
+    rgba(255,255,255,.05);
+
 
 
     backdrop-filter:blur(25px);
 
 
+
     border-bottom:
 
-    1px solid rgba(255,255,255,.15);
+    1px solid var(--border);
+
 
 }
+
+
 
 
 
 header h1{
 
+
+    margin:0;
+
+
     font-size:34px;
+
+
+    font-weight:800;
+
 
     letter-spacing:-1px;
 
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #ffffff,
+        #93c5fd
+    );
+
+
+
+    -webkit-background-clip:text;
+
+
+    color:transparent;
+
+
+
 }
+
 
 
 
 header p{
 
-    color:#bdbdbd;
+
+    margin:0;
+
+
+    color:#94a3b8;
+
+
+    font-size:16px;
+
 
 }
+
+
 
 
 
 .header-xp{
 
-    font-weight:600;
+
+    margin-left:auto;
+
 
     font-size:18px;
 
+
+    font-weight:700;
+
+
 }
+
 
 
 
@@ -120,17 +220,27 @@ header p{
 
 #menuMobile{
 
+
     display:none;
+
 
     border:none;
 
+
     background:none;
+
 
     color:white;
 
+
     font-size:30px;
 
+
 }
+
+
+
+
 
 
 
@@ -143,49 +253,74 @@ STRUCTURE
 
 .layout{
 
+
     display:flex;
+
 
     min-height:calc(100vh - 90px);
 
+
 }
+
+
+
+
 
 
 
 
 
 /* ======================
-MENU
+SIDEBAR
 ====================== */
 
 
 aside{
 
-    width:280px;
 
-    padding:25px;
+    width:260px;
+
+
+    padding:20px;
+
 
 
     background:
 
-    rgba(255,255,255,.07);
+
+    rgba(255,255,255,.05);
 
 
-    backdrop-filter:blur(25px);
+
+    backdrop-filter:blur(20px);
+
 
 
     border-right:
 
-    1px solid rgba(255,255,255,.15);
+    1px solid var(--border);
+
+
 
 }
+
+
 
 
 
 aside h2{
 
-    margin-bottom:25px;
+
+    font-size:20px;
+
+
+    margin-bottom:20px;
+
 
 }
+
+
+
 
 
 
@@ -195,33 +330,41 @@ aside h2{
     width:100%;
 
 
-    padding:14px;
+    padding:12px 15px;
 
 
-    margin-bottom:12px;
+    margin:5px 0;
+
+
+    border-radius:14px;
 
 
     border:none;
 
 
-    border-radius:18px;
-
 
     color:white;
 
 
+
     background:
 
-    rgba(255,255,255,.09);
+
+    rgba(255,255,255,.07);
+
 
 
     cursor:pointer;
 
 
+
     transition:.25s;
 
 
+
 }
+
+
 
 
 
@@ -230,13 +373,32 @@ aside h2{
 
     background:
 
-    rgba(255,255,255,.2);
+
+    linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
 
 
     transform:translateX(5px);
 
 
+
 }
+
+
+
+.chapitres button:active{
+
+
+    transform:scale(.95);
+
+
+}
+
+
 
 
 
@@ -252,48 +414,56 @@ PROGRESSION
 .progression{
 
 
-    margin-top:35px;
+    margin-top:25px;
 
 
-    padding:20px;
+    padding:18px;
 
 
-    border-radius:25px;
+    border-radius:20px;
+
 
 
     background:
 
-    rgba(255,255,255,.1);
+
+    rgba(255,255,255,.08);
+
 
 
 }
+
+
 
 
 
 .xp-bar{
 
 
+    height:10px;
+
+
     width:100%;
 
 
-    height:12px;
+
+    margin-top:15px;
 
 
-    margin:15px 0;
+    background:#1e293b;
 
-
-    overflow:hidden;
 
 
     border-radius:20px;
 
 
-    background:
+    overflow:hidden;
 
-    rgba(255,255,255,.15);
 
 
 }
+
+
 
 
 
@@ -307,19 +477,111 @@ PROGRESSION
     width:0%;
 
 
-    border-radius:20px;
-
 
     background:
 
+
     linear-gradient(
         90deg,
-        #6366f1,
-        #c084fc
+        #22c55e,
+        #38bdf8,
+        #6366f1
     );
 
 
-    transition:.6s;
+
+    border-radius:20px;
+
+
+    transition:.5s;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ======================
+MAIN
+====================== */
+
+
+main{
+
+
+    flex:1;
+
+
+    padding:30px 45px;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    align-items:center;
+
+
+
+}
+
+
+
+
+
+#pageAccueil,
+#pageCours,
+#pageProfil{
+
+
+    width:100%;
+
+
+    max-width:900px;
+
+
+}
+
+
+
+
+
+#titre{
+
+
+    font-size:34px;
+
+
+    font-weight:800;
+
+
+    width:100%;
+
+
+}
+
+
+
+
+
+#compteur{
+
+
+    width:100%;
+
+
+    margin-top:10px;
+
+
+    color:#94a3b8;
+
 
 }
 
@@ -331,86 +593,54 @@ PROGRESSION
 
 
 /* ======================
-CONTENU
+QUESTION
 ====================== */
-
-
-main{
-
-
-    flex:1;
-
-
-    max-width:900px;
-
-
-    margin:auto;
-
-
-    padding:45px;
-
-}
-
-
-
-h2{
-
-    font-size:38px;
-
-}
-
-
-
-#compteur{
-
-    margin-top:10px;
-
-    margin-bottom:30px;
-
-    color:#aaa;
-
-}
-
-
-
-
-
-
-.card{
-
-
-    padding:28px;
-
-
-    margin-bottom:35px;
-
-
-    border-radius:30px;
-
-
-    background:
-
-    rgba(255,255,255,.1);
-
-
-    backdrop-filter:blur(25px);
-
-
-    border:
-
-    1px solid rgba(255,255,255,.15);
-
-
-}
-
-
 
 
 #enonce{
 
+
+    width:100%;
+
+
+    padding:25px 30px;
+
+
+    margin:20px 0;
+
+
+    border-radius:25px;
+
+
+
+    background:
+
+
+    rgba(255,255,255,.08);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    backdrop-filter:blur(20px);
+
+
+
     font-size:18px;
 
+
     line-height:1.5;
+
+
+
+    animation:
+
+    apparition .35s ease;
+
 
 }
 
@@ -418,6 +648,12 @@ h2{
 
 
 
+
+
+
+/* ======================
+CODE
+====================== */
 
 
 textarea{
@@ -426,31 +662,70 @@ textarea{
     width:100%;
 
 
-    height:230px;
+    height:210px;
+
+
+    margin-top:15px;
+
+
+    margin-bottom:20px;
+
 
 
     padding:22px;
 
 
+
     resize:none;
 
 
-    border:none;
+    border-radius:22px;
+
+
+
+    background:#020617;
+
+
+    color:#38bdf8;
+
+
+
+    border:
+
+    1px solid #334155;
+
+
+
+    font-family:"JetBrains Mono",monospace;
+
+
+    font-size:15px;
 
 
     outline:none;
 
 
-    border-radius:28px;
+
+    transition:.3s;
 
 
-    background:#050505;
+
+}
 
 
-    color:white;
 
 
-    font-size:16px;
+
+textarea:focus{
+
+
+    border-color:#6366f1;
+
+
+    box-shadow:
+
+    0 0 25px #6366f155;
+
 
 
 }
@@ -462,7 +737,15 @@ textarea{
 
 
 
+/* ======================
+BOUTONS
+====================== */
+
+
 .buttons{
+
+
+    width:100%;
 
 
     display:flex;
@@ -471,13 +754,11 @@ textarea{
     gap:20px;
 
 
-    margin-top:35px;
-
-
-    margin-bottom:35px;
+    margin-bottom:20px;
 
 
 }
+
 
 
 
@@ -487,31 +768,172 @@ textarea{
     flex:1;
 
 
-    padding:16px;
+    padding:14px 30px;
 
 
     border:none;
 
 
-    border-radius:22px;
+    border-radius:16px;
+
+
+
+    color:white;
+
+
+    font-weight:700;
+
+
+
+    cursor:pointer;
+
+
+
+    transition:.25s;
+
+
+
+}
+
+
+
+#verifier{
+
+
+    background:#22c55e;
+
+
+}
+
+
+
+
+
+#suivant{
+
+
+    background:#6366f1;
+
+
+}
+
+
+
+
+
+
+.buttons button:hover{
+
+
+    transform:translateY(-4px);
+
+
+    filter:brightness(1.15);
+
+
+
+}
+
+
+
+.buttons button:active{
+
+
+    transform:scale(.92);
+
+
+}
+
+
+
+
+
+
+
+
+/* ======================
+SORTIE
+====================== */
+
+
+.output{
+
+
+    width:100%;
+
+
+    min-height:100px;
+
+
+
+    margin-top:25px;
+
+
+    padding:22px;
+
+
+
+    border-radius:20px;
+
+
+
+    background:#020617;
+
+
+
+    border:
+
+    1px solid #334155;
+
+
+
+    font-family:"JetBrains Mono",monospace;
+
+
+
+}/* ======================
+AIDES COURS / INDICES
+====================== */
+
+
+.aide{
+
+    width:100%;
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+
+
+.aide button{
+
+
+    flex:1;
+
+
+    padding:12px;
+
+
+    border-radius:15px;
+
+
+    border:1px solid var(--border);
+
+
+    background:
+
+    rgba(255,255,255,.08);
 
 
     color:white;
 
 
     cursor:pointer;
-
-
-    font-size:16px;
-
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #6366f1,
-        #a855f7
-    );
 
 
     transition:.25s;
@@ -521,10 +943,19 @@ textarea{
 
 
 
-.buttons button:hover{
+.aide button:hover{
 
 
-    transform:translateY(-5px);
+    background:
+
+    linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+
+    transform:translateY(-3px);
 
 
 }
@@ -532,21 +963,35 @@ textarea{
 
 
 
+#aideTexte{
 
 
-.output{
+    width:100%;
 
 
-    min-height:110px;
+    padding:18px;
 
 
     margin-top:15px;
 
 
-    display:flex;
+    border-radius:18px;
 
 
-    align-items:flex-start;
+
+    background:
+
+    rgba(255,255,255,.06);
+
+
+
+    border:
+
+    1px solid var(--border);
+
+
+
+    color:#cbd5e1;
 
 
 }
@@ -556,9 +1001,54 @@ textarea{
 
 
 
-.hidden{
 
-    display:none;
+
+/* ======================
+ANIMATIONS
+====================== */
+
+
+#enonce,
+textarea,
+.output{
+
+
+    animation:
+
+    apparition .35s ease;
+
+
+}
+
+
+
+
+@keyframes apparition{
+
+
+from{
+
+
+    opacity:0;
+
+
+    transform:translateY(10px);
+
+
+}
+
+
+to{
+
+
+    opacity:1;
+
+
+    transform:translateY(0);
+
+
+}
+
 
 }
 
@@ -580,6 +1070,7 @@ BARRE MOBILE
 
     display:none;
 
+
 }
 
 
@@ -587,8 +1078,10 @@ BARRE MOBILE
 
 
 
+
+
 /* ======================
-TELEPHONE
+MOBILE
 ====================== */
 
 
@@ -598,68 +1091,135 @@ TELEPHONE
 
 body{
 
+
     padding-bottom:100px;
+
 
 }
 
 
+
+
+
+
+/* HEADER */
 
 
 header{
 
 
-    height:75px;
+    height:auto;
 
 
-    padding:15px 20px;
+    min-height:75px;
+
+
+    padding:18px 20px;
+
+
+    flex-direction:column;
+
+
+    align-items:flex-start;
+
+
+    gap:5px;
+
 
 }
+
 
 
 
 header h1{
 
-    font-size:25px;
+
+    font-size:28px;
+
 
 }
+
 
 
 
 header p{
 
-    display:none;
+
+    font-size:14px;
+
 
 }
+
+
+
+.header-xp{
+
+
+    position:absolute;
+
+
+    right:20px;
+
+
+    top:25px;
+
+
+    font-size:14px;
+
+
+}
+
+
 
 
 
 
 #menuMobile{
 
+
     display:block;
 
+
+    position:absolute;
+
+
+    right:20px;
+
+
+    top:55px;
+
+
 }
 
 
 
 
-.header-xp{
-
-    font-size:15px;
-
-}
 
 
+
+
+
+/* STRUCTURE */
 
 
 .layout{
 
+
     display:block;
+
+
+    min-height:auto;
+
 
 }
 
 
 
+
+
+
+
+/* MENU MOBILE */
 
 
 aside{
@@ -674,13 +1234,14 @@ aside{
     left:-300px;
 
 
-    height:100vh;
-
-
     width:280px;
 
 
+    height:100vh;
+
+
     z-index:100;
+
 
 
     transition:.35s;
@@ -692,7 +1253,9 @@ aside{
 
 aside.active{
 
+
     left:0;
+
 
 }
 
@@ -700,6 +1263,10 @@ aside.active{
 
 
 
+
+
+
+/* CONTENU */
 
 
 main{
@@ -713,20 +1280,32 @@ main{
 
 
 
-h2{
+#titre{
 
-    font-size:30px;
+
+    font-size:28px;
+
 
 }
 
 
 
 
-.card{
 
-    padding:22px;
+#enonce{
+
+
+    padding:18px;
+
+
+    font-size:16px;
+
+
+    border-radius:20px;
+
 
 }
+
 
 
 
@@ -735,9 +1314,14 @@ h2{
 textarea{
 
 
-    height:180px;
+    height:220px;
+
+
+    font-size:14px;
+
 
 }
+
 
 
 
@@ -749,7 +1333,12 @@ textarea{
     flex-direction:column;
 
 
+    gap:10px;
+
+
 }
+
+
 
 
 
@@ -758,6 +1347,7 @@ textarea{
 
     width:100%;
 
+
 }
 
 
@@ -765,7 +1355,12 @@ textarea{
 
 
 
-/* DOCK IPHONE */
+
+
+
+/* ======================
+DOCK IPHONE
+====================== */
 
 
 .bottom-nav{
@@ -789,7 +1384,9 @@ textarea{
     height:75px;
 
 
+
     border-radius:28px;
+
 
 
     justify-content:space-around;
@@ -798,37 +1395,54 @@ textarea{
     align-items:center;
 
 
+
     z-index:200;
+
+
 
 
     background:
 
+
     rgba(255,255,255,.12);
+
 
 
     backdrop-filter:blur(30px);
 
 
+
     border:
+
 
     1px solid rgba(255,255,255,.2);
 
 
+
     transition:
 
-    transform .35s ease,
 
-    opacity .35s ease;
+    transform .5s cubic-bezier(.4,0,.2,1),
+
+
+    opacity .5s ease;
+
 
 
 }
 
 
 
+
+
 .bottom-nav.hide{
 
 
-    transform:translateY(130px);
+    transform:
+
+
+    translateY(130px);
+
 
 
     opacity:0;
@@ -838,13 +1452,16 @@ textarea{
 
 
 
+
+
+
 .nav-btn{
 
 
-    background:none;
-
-
     border:none;
+
+
+    background:none;
 
 
     color:white;
@@ -862,10 +1479,16 @@ textarea{
     gap:5px;
 
 
+
     font-size:22px;
 
 
+    cursor:pointer;
+
+
+
 }
+
 
 
 
@@ -874,20 +1497,46 @@ textarea{
 
     font-size:12px;
 
+
 }
+
+
 
 
 
 .nav-btn.active{
 
 
-    transform:translateY(-10px);
+    transform:
+
+
+    translateY(-10px);
 
 
 }
 
 
 
+
+
+
+
+
+}
+
+
+
+
+
+/* ======================
+PROFIL / COURS
+====================== */
+
+
+.hidden{
+
+
+    display:none;
 
 
 }
