@@ -2,14 +2,14 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
 }
 
 
 html{
     min-height:100%;
+    background:#050505;
 }
-
 
 
 body{
@@ -18,17 +18,27 @@ body{
 
     color:white;
 
+    overflow-x:hidden;
+
     background:
+    radial-gradient(
+        circle at top left,
+        #312e81,
+        transparent 35%
+    ),
+    radial-gradient(
+        circle at bottom right,
+        #1e40af,
+        transparent 35%
+    ),
     linear-gradient(
         135deg,
         #050505,
-        #111827,
-        #312e81
+        #111827
     );
 
-    background-attachment:fixed;
 
-    overflow-x:hidden;
+    background-attachment:fixed;
 
 }
 
@@ -36,9 +46,9 @@ body{
 
 
 
-
-
-/* HEADER */
+/* ======================
+HEADER
+====================== */
 
 
 header{
@@ -51,25 +61,28 @@ header{
 
     justify-content:space-between;
 
+
     padding:20px 40px;
-
-
-    background:
-    rgba(255,255,255,0.08);
-
-
-    backdrop-filter:blur(20px);
-
-
-    border-bottom:
-    1px solid rgba(255,255,255,.15);
 
 
     position:sticky;
 
     top:0;
 
-    z-index:10;
+    z-index:20;
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+    backdrop-filter:blur(25px);
+
+
+    border-bottom:
+
+    1px solid rgba(255,255,255,.15);
 
 }
 
@@ -79,19 +92,23 @@ header h1{
 
     font-size:34px;
 
+    letter-spacing:-1px;
+
 }
 
 
 
 header p{
 
-    color:#cfcfcf;
+    color:#bdbdbd;
 
 }
 
 
 
 .header-xp{
+
+    font-weight:600;
 
     font-size:18px;
 
@@ -105,13 +122,13 @@ header p{
 
     display:none;
 
-    background:none;
-
     border:none;
+
+    background:none;
 
     color:white;
 
-    font-size:28px;
+    font-size:30px;
 
 }
 
@@ -119,9 +136,9 @@ header p{
 
 
 
-
-
-/* STRUCTURE */
+/* ======================
+STRUCTURE
+====================== */
 
 
 .layout{
@@ -136,32 +153,29 @@ header p{
 
 
 
-
-
-/* MENU GAUCHE */
+/* ======================
+MENU
+====================== */
 
 
 aside{
 
-
     width:280px;
-
 
     padding:25px;
 
 
     background:
 
-    rgba(255,255,255,.06);
+    rgba(255,255,255,.07);
 
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:blur(25px);
 
 
     border-right:
 
     1px solid rgba(255,255,255,.15);
-
 
 }
 
@@ -169,7 +183,7 @@ aside{
 
 aside h2{
 
-    margin-bottom:20px;
+    margin-bottom:25px;
 
 }
 
@@ -184,13 +198,13 @@ aside h2{
     padding:14px;
 
 
-    margin-bottom:10px;
+    margin-bottom:12px;
 
 
     border:none;
 
 
-    border-radius:16px;
+    border-radius:18px;
 
 
     color:white;
@@ -198,7 +212,7 @@ aside h2{
 
     background:
 
-    rgba(255,255,255,.1);
+    rgba(255,255,255,.09);
 
 
     cursor:pointer;
@@ -214,12 +228,12 @@ aside h2{
 .chapitres button:hover{
 
 
-    transform:translateX(6px);
-
-
     background:
 
     rgba(255,255,255,.2);
+
+
+    transform:translateX(5px);
 
 
 }
@@ -230,15 +244,15 @@ aside h2{
 
 
 
-
-
-/* PROGRESSION */
+/* ======================
+PROGRESSION
+====================== */
 
 
 .progression{
 
 
-    margin-top:30px;
+    margin-top:35px;
 
 
     padding:20px;
@@ -256,7 +270,6 @@ aside h2{
 
 
 
-
 .xp-bar{
 
 
@@ -266,18 +279,18 @@ aside h2{
     height:12px;
 
 
-    background:
-
-    rgba(255,255,255,.15);
-
-
-    border-radius:20px;
+    margin:15px 0;
 
 
     overflow:hidden;
 
 
-    margin:15px 0;
+    border-radius:20px;
+
+
+    background:
+
+    rgba(255,255,255,.15);
 
 
 }
@@ -294,6 +307,9 @@ aside h2{
     width:0%;
 
 
+    border-radius:20px;
+
+
     background:
 
     linear-gradient(
@@ -303,11 +319,7 @@ aside h2{
     );
 
 
-    border-radius:20px;
-
-
-    transition:.5s;
-
+    transition:.6s;
 
 }
 
@@ -318,8 +330,9 @@ aside h2{
 
 
 
-
-/* CONTENU */
+/* ======================
+CONTENU
+====================== */
 
 
 main{
@@ -334,11 +347,9 @@ main{
     margin:auto;
 
 
-    padding:40px;
-
+    padding:45px;
 
 }
-
 
 
 
@@ -352,11 +363,14 @@ h2{
 
 #compteur{
 
-    color:#bbb;
+    margin-top:10px;
 
-    margin:10px 0 25px;
+    margin-bottom:30px;
+
+    color:#aaa;
 
 }
+
 
 
 
@@ -365,12 +379,21 @@ h2{
 .card{
 
 
+    padding:28px;
+
+
+    margin-bottom:35px;
+
+
+    border-radius:30px;
+
+
     background:
 
     rgba(255,255,255,.1);
 
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:blur(25px);
 
 
     border:
@@ -378,25 +401,16 @@ h2{
     1px solid rgba(255,255,255,.15);
 
 
-    border-radius:28px;
-
-
-    padding:25px;
-
-
-    margin-bottom:25px;
-
-
 }
-
 
 
 
 
 #enonce{
 
-
     font-size:18px;
+
+    line-height:1.5;
 
 }
 
@@ -412,7 +426,13 @@ textarea{
     width:100%;
 
 
-    height:220px;
+    height:230px;
+
+
+    padding:22px;
+
+
+    resize:none;
 
 
     border:none;
@@ -421,13 +441,7 @@ textarea{
     outline:none;
 
 
-    resize:none;
-
-
-    padding:20px;
-
-
-    border-radius:25px;
+    border-radius:28px;
 
 
     background:#050505;
@@ -446,16 +460,21 @@ textarea{
 
 
 
+
+
 .buttons{
 
 
     display:flex;
 
 
-    gap:15px;
+    gap:20px;
 
 
-    margin-top:20px;
+    margin-top:35px;
+
+
+    margin-bottom:35px;
 
 
 }
@@ -468,13 +487,22 @@ textarea{
     flex:1;
 
 
-    padding:15px;
+    padding:16px;
 
 
     border:none;
 
 
-    border-radius:20px;
+    border-radius:22px;
+
+
+    color:white;
+
+
+    cursor:pointer;
+
+
+    font-size:16px;
 
 
     background:
@@ -484,12 +512,6 @@ textarea{
         #6366f1,
         #a855f7
     );
-
-
-    color:white;
-
-
-    cursor:pointer;
 
 
     transition:.25s;
@@ -502,11 +524,32 @@ textarea{
 .buttons button:hover{
 
 
-    transform:translateY(-4px);
+    transform:translateY(-5px);
 
 
 }
 
+
+
+
+
+
+.output{
+
+
+    min-height:110px;
+
+
+    margin-top:15px;
+
+
+    display:flex;
+
+
+    align-items:flex-start;
+
+
+}
 
 
 
@@ -527,7 +570,9 @@ textarea{
 
 
 
-/* BARRE MOBILE */
+/* ======================
+BARRE MOBILE
+====================== */
 
 
 .bottom-nav{
@@ -542,9 +587,9 @@ textarea{
 
 
 
-
-
-/* TELEPHONE */
+/* ======================
+TELEPHONE
+====================== */
 
 
 @media(max-width:768px){
@@ -553,15 +598,18 @@ textarea{
 
 body{
 
-    padding-bottom:90px;
+    padding-bottom:100px;
 
 }
 
 
 
+
 header{
 
+
     height:75px;
+
 
     padding:15px 20px;
 
@@ -571,7 +619,7 @@ header{
 
 header h1{
 
-    font-size:24px;
+    font-size:25px;
 
 }
 
@@ -585,9 +633,19 @@ header p{
 
 
 
+
 #menuMobile{
 
     display:block;
+
+}
+
+
+
+
+.header-xp{
+
+    font-size:15px;
 
 }
 
@@ -619,7 +677,10 @@ aside{
     height:100vh;
 
 
-    z-index:50;
+    width:280px;
+
+
+    z-index:100;
 
 
     transition:.35s;
@@ -631,11 +692,11 @@ aside{
 
 aside.active{
 
-
     left:0;
 
-
 }
+
+
 
 
 
@@ -644,10 +705,11 @@ aside.active{
 main{
 
 
-    padding:20px 15px;
+    padding:25px 15px;
 
 
 }
+
 
 
 
@@ -659,11 +721,24 @@ h2{
 
 
 
-textarea{
 
-    height:170px;
+.card{
+
+    padding:22px;
 
 }
+
+
+
+
+
+textarea{
+
+
+    height:180px;
+
+}
+
 
 
 
@@ -673,9 +748,24 @@ textarea{
 
     flex-direction:column;
 
+
 }
 
 
+
+.buttons button{
+
+
+    width:100%;
+
+}
+
+
+
+
+
+
+/* DOCK IPHONE */
 
 
 .bottom-nav{
@@ -687,32 +777,19 @@ textarea{
     position:fixed;
 
 
-    bottom:15px;
-
-
     left:15px;
 
 
     right:15px;
 
 
-    height:70px;
+    bottom:15px;
 
 
-    border-radius:25px;
+    height:75px;
 
 
-    background:
-
-    rgba(255,255,255,.12);
-
-
-    backdrop-filter:blur(25px);
-
-
-    border:
-
-    1px solid rgba(255,255,255,.2);
+    border-radius:28px;
 
 
     justify-content:space-around;
@@ -721,7 +798,40 @@ textarea{
     align-items:center;
 
 
-    z-index:100;
+    z-index:200;
+
+
+    background:
+
+    rgba(255,255,255,.12);
+
+
+    backdrop-filter:blur(30px);
+
+
+    border:
+
+    1px solid rgba(255,255,255,.2);
+
+
+    transition:
+
+    transform .35s ease,
+
+    opacity .35s ease;
+
+
+}
+
+
+
+.bottom-nav.hide{
+
+
+    transform:translateY(130px);
+
+
+    opacity:0;
 
 
 }
@@ -746,7 +856,10 @@ textarea{
     flex-direction:column;
 
 
-    gap:4px;
+    align-items:center;
+
+
+    gap:5px;
 
 
     font-size:22px;
@@ -768,10 +881,12 @@ textarea{
 .nav-btn.active{
 
 
-    transform:translateY(-8px);
+    transform:translateY(-10px);
 
 
 }
+
+
 
 
 
