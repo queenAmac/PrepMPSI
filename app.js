@@ -1,5 +1,8 @@
-console.log("PrepMPSI chargé");
+console.log("🐍 PrepMPSI chargé");
 
+
+
+/* ELEMENTS */
 
 
 const titre = document.getElementById("titre");
@@ -8,85 +11,197 @@ const enonce = document.getElementById("enonce");
 const code = document.getElementById("code");
 const output = document.querySelector(".output");
 
-const boutonVerifier = document.getElementById("verifier");
-const boutonSuivant = document.getElementById("suivant");
 
-const xpElement = document.getElementById("xp");
-const niveau = document.getElementById("niveau");
+const boutonVerifier =
+document.getElementById("verifier");
 
-const menuMobile = document.getElementById("menuMobile");
-const menuChapitre = document.getElementById("menuChapitre");
+const boutonSuivant =
+document.getElementById("suivant");
 
+
+
+const xpElement =
+document.getElementById("xp");
+
+const niveau =
+document.getElementById("niveau");
+
+
+
+const xpProfil =
+document.getElementById("xpProfil");
+
+const niveauProfil =
+document.getElementById("niveauProfil");
+
+
+
+const xpProgress =
+document.getElementById("xpProgress");
+
+const xpProgressProfil =
+document.getElementById("xpProgressProfil");
+
+
+
+const menuChapitre =
+document.getElementById("menuChapitre");
+
+const menuMobile =
+document.getElementById("menuMobile");
+
+
+
+
+
+/* DONNEES */
 
 
 let chapitreActuel = "Variables";
+
 
 let numeroExercice = 0;
 
 
 
-let xp = Number(localStorage.getItem("xp")) || 0;
+let xp =
+Number(localStorage.getItem("xp")) || 0;
 
 
 
-let progression = JSON.parse(
-    localStorage.getItem("progression")
-) || {};
+let progression =
+JSON.parse(
+localStorage.getItem("progression")
+)
+||
+{};
 
 
 
 
 
-/* =====================
-   NIVEAU
-===================== */
+
+
+
+/* XP + NIVEAU */
 
 
 function mettreAJourNiveau(){
 
 
-    if(xp < 100){
+let niveauTexte;
 
-        niveau.textContent="Débutant";
 
-    }
+if(xp < 100){
 
-    else if(xp < 300){
+niveauTexte="Débutant";
 
-        niveau.textContent="Apprenti Python";
+}
 
-    }
 
-    else if(xp < 600){
+else if(xp < 300){
 
-        niveau.textContent="Programmeur";
+niveauTexte="Apprenti Python";
 
-    }
+}
 
-    else{
 
-        niveau.textContent="Niveau MPSI 🚀";
+else if(xp < 600){
 
-    }
+niveauTexte="Programmeur";
+
+}
+
+
+else{
+
+niveauTexte="Niveau MPSI 🚀";
+
+}
+
+
+
+niveau.textContent=niveauTexte;
+
+niveauProfil.textContent=niveauTexte;
+
 
 
 }
+
+
+
+
+function mettreAJourXP(){
+
+
+
+xpElement.textContent=xp;
+
+xpProfil.textContent=xp;
+
+
+
+let objectif=100;
+
+
+if(xp>=100 && xp<300){
+
+objectif=300;
+
+}
+
+else if(xp>=300 && xp<600){
+
+objectif=600;
+
+}
+
+else if(xp>=600){
+
+objectif=1000;
+
+}
+
+
+
+let pourcentage =
+Math.min(
+(xp/objectif)*100,
+100
+);
+
+
+
+xpProgress.style.width =
+pourcentage+"%";
+
+
+xpProgressProfil.style.width =
+pourcentage+"%";
+
+
+
+}
+
+
 
 
 
 function sauvegarder(){
 
 
-    localStorage.setItem(
-        "xp",
-        xp
-    );
+localStorage.setItem(
+"xp",
+xp
+);
 
 
-    localStorage.setItem(
-        "progression",
-        JSON.stringify(progression)
-    );
+
+localStorage.setItem(
+"progression",
+JSON.stringify(progression)
+);
 
 
 }
@@ -94,41 +209,40 @@ function sauvegarder(){
 
 
 
-
-
-/* =====================
-   AFFICHER EXERCICE
-===================== */
+/* AFFICHAGE EXERCICE */
 
 
 function afficherExercice(){
 
 
-    let exercice =
-    exercices[chapitreActuel][numeroExercice];
 
-
-    titre.textContent =
-    chapitreActuel;
+let exercice =
+exercices[chapitreActuel][numeroExercice];
 
 
 
-    compteur.textContent =
-    `Exercice ${numeroExercice+1} / ${exercices[chapitreActuel].length}`;
+titre.textContent =
+chapitreActuel;
 
 
 
-    enonce.textContent =
-    exercice.titre +
-    " : " +
-    exercice.enonce;
+compteur.textContent =
+`Exercice ${numeroExercice+1} / ${exercices[chapitreActuel].length}`;
 
 
 
-    code.value="";
+enonce.textContent =
+exercice.titre +
+" : " +
+exercice.enonce;
 
 
-    output.textContent="Sortie :";
+
+code.value="";
+
+
+output.textContent="Sortie :";
+
 
 
 }
@@ -139,40 +253,38 @@ function afficherExercice(){
 
 
 
-/* =====================
-   CHAPITRES
-===================== */
+
+/* CHAPITRES */
 
 
 document
-.querySelectorAll("aside button")
+.querySelectorAll(".chapitres button")
 .forEach(button=>{
 
 
-    button.addEventListener(
-        "click",
-        ()=>{
+button.addEventListener(
+"click",
+()=>{
 
 
-        chapitreActuel =
-        button.textContent;
-
-
-        numeroExercice =
-        progression[chapitreActuel] || 0;
-
-
-        afficherExercice();
+chapitreActuel =
+button.textContent;
 
 
 
-        // ferme menu mobile
+numeroExercice =
+progression[chapitreActuel] || 0;
 
-        menuChapitre.classList.remove("active");
 
 
-        }
-    );
+afficherExercice();
+
+
+
+menuChapitre.classList.remove("active");
+
+
+});
 
 
 });
@@ -183,9 +295,9 @@ document
 
 
 
-/* =====================
-   VERIFIER
-===================== */
+
+
+/* VERIFICATION */
 
 
 boutonVerifier.addEventListener(
@@ -198,43 +310,48 @@ exercices[chapitreActuel][numeroExercice];
 
 
 
-if(code.value.includes(exercice.solution)){
-
-
-    output.textContent =
-    "✅ Correct ! +" +
-    exercice.xp +
-    " XP";
+if(
+code.value.includes(exercice.solution)
+){
 
 
 
-    xp += exercice.xp;
+output.textContent =
+"✅ Correct ! +" +
+exercice.xp +
+" XP";
 
 
 
-    progression[chapitreActuel] =
-    numeroExercice + 1;
+xp += exercice.xp;
 
 
 
-    sauvegarder();
+progression[chapitreActuel]
+=
+numeroExercice+1;
 
 
 
-    xpElement.textContent=xp;
+sauvegarder();
 
 
-    mettreAJourNiveau();
+
+mettreAJourXP();
+
+mettreAJourNiveau();
+
 
 
 }
 
 
+
 else{
 
 
-    output.textContent =
-    "❌ Pas encore";
+output.textContent =
+"❌ Pas encore";
 
 
 }
@@ -250,9 +367,7 @@ else{
 
 
 
-/* =====================
-   SUIVANT
-===================== */
+/* SUIVANT */
 
 
 boutonSuivant.addEventListener(
@@ -260,22 +375,27 @@ boutonSuivant.addEventListener(
 ()=>{
 
 
-if(numeroExercice <
-exercices[chapitreActuel].length-1){
+if(
+numeroExercice <
+exercices[chapitreActuel].length-1
+){
 
 
-    numeroExercice++;
+numeroExercice++;
 
-    afficherExercice();
+
+afficherExercice();
+
 
 
 }
 
+
 else{
 
 
-    output.textContent =
-    "🎉 Chapitre terminé !";
+output.textContent =
+"🎉 Chapitre terminé !";
 
 
 }
@@ -291,9 +411,8 @@ else{
 
 
 
-/* =====================
-   MENU MOBILE
-===================== */
+
+/* MENU MOBILE */
 
 
 menuMobile.addEventListener(
@@ -313,58 +432,159 @@ menuChapitre.classList.toggle("active");
 
 
 
-/* =====================
-   BARRE DU BAS
-===================== */
+/* NAVIGATION MOBILE */
+
+
+const pageAccueil =
+document.getElementById("pageAccueil");
+
+const pageCours =
+document.getElementById("pageCours");
+
+const pageProfil =
+document.getElementById("pageProfil");
+
+
+
+
+function changerPage(page){
+
+
+pageAccueil.classList.add("hidden");
+
+pageCours.classList.add("hidden");
+
+pageProfil.classList.add("hidden");
+
+
+page.classList.remove("hidden");
+
+
+}
+
+
+
+
+
+document
+.getElementById("accueil")
+.onclick =
+()=>{
+
+
+changerPage(pageAccueil);
+
+
+};
+
+
+
+
 
 
 document
 .getElementById("cours")
-.addEventListener(
-"click",
+.onclick =
 ()=>{
 
 
-menuChapitre.classList.add("active");
+changerPage(pageCours);
 
 
-});
+chargerCours();
+
+
+};
+
+
 
 
 
 
 document
 .getElementById("profil")
-.addEventListener(
-"click",
+.onclick =
 ()=>{
 
 
-alert(
-`🏆 XP : ${xp}\n🚀 ${niveau.textContent}`
-);
+changerPage(pageProfil);
 
 
-});
+mettreAJourXP();
+
+mettreAJourNiveau();
+
+
+};
 
 
 
-document
-.getElementById("accueil")
-.addEventListener(
-"click",
+
+
+
+
+
+
+
+/* LISTE COURS MOBILE */
+
+
+function chargerCours(){
+
+
+const liste =
+document.getElementById("listeCours");
+
+
+liste.innerHTML="";
+
+
+
+Object.keys(exercices)
+.forEach(chapitre=>{
+
+
+let bouton =
+document.createElement("button");
+
+
+bouton.textContent =
+"📘 "+chapitre;
+
+
+
+bouton.onclick =
 ()=>{
 
 
-chapitreActuel="Variables";
+chapitreActuel =
+chapitre;
 
-numeroExercice=0;
+
+
+numeroExercice =
+progression[chapitre] || 0;
+
+
+
+changerPage(pageAccueil);
+
 
 afficherExercice();
 
 
+};
+
+
+
+liste.appendChild(bouton);
+
+
+
 });
 
+
+}
 
 
 
@@ -375,8 +595,9 @@ afficherExercice();
 /* INITIALISATION */
 
 
-xpElement.textContent=xp;
+mettreAJourXP();
 
 mettreAJourNiveau();
+
 
 afficherExercice();
