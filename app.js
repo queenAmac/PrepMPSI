@@ -1,7 +1,6 @@
 console.log("PrepMPSI chargé");
 
 
-// ELEMENTS
 
 const titre = document.getElementById("titre");
 const compteur = document.getElementById("compteur");
@@ -9,161 +8,85 @@ const enonce = document.getElementById("enonce");
 const code = document.getElementById("code");
 const output = document.querySelector(".output");
 
+const boutonVerifier = document.getElementById("verifier");
+const boutonSuivant = document.getElementById("suivant");
 
 const xpElement = document.getElementById("xp");
 const niveau = document.getElementById("niveau");
 
-
-const chapitreProgression =
-document.getElementById("chapitreProgression");
-
-const barreXP =
-document.getElementById("barreXP");
-
-const reussis =
-document.getElementById("reussis");
+const menuMobile = document.getElementById("menuMobile");
+const menuChapitre = document.getElementById("menuChapitre");
 
 
-const aideTexte =
-document.getElementById("aideTexte");
-
-
-const boutonCours =
-document.getElementById("cours");
-
-const boutonIndice =
-document.getElementById("indice");
-
-const boutonCorrection =
-document.getElementById("correction");
-
-
-const boutonVerifier =
-document.getElementById("verifier");
-
-const boutonSuivant =
-document.getElementById("suivant");
-
-
-
-
-// VARIABLES
 
 let chapitreActuel = "Variables";
 
 let numeroExercice = 0;
 
 
-let xp =
-Number(localStorage.getItem("xp")) || 0;
+
+let xp = Number(localStorage.getItem("xp")) || 0;
 
 
 
-let progression =
-JSON.parse(localStorage.getItem("progression")) || {};
-
-
-
-let exercicesValides =
-JSON.parse(localStorage.getItem("exercicesValides")) || {};
+let progression = JSON.parse(
+    localStorage.getItem("progression")
+) || {};
 
 
 
 
 
-// AFFICHAGE XP
+/* =====================
+   NIVEAU
+===================== */
 
-xpElement.textContent = xp;
-
-
-
-
-// NIVEAU
 
 function mettreAJourNiveau(){
 
 
     if(xp < 100){
 
-        niveau.textContent = "Débutant";
+        niveau.textContent="Débutant";
 
     }
-
 
     else if(xp < 300){
 
-        niveau.textContent = "Apprenti Python";
+        niveau.textContent="Apprenti Python";
 
     }
-
 
     else if(xp < 600){
 
-        niveau.textContent = "Programmeur";
+        niveau.textContent="Programmeur";
 
     }
-
 
     else{
 
-        niveau.textContent = "Niveau MPSI 🚀";
+        niveau.textContent="Niveau MPSI 🚀";
 
     }
+
 
 }
 
 
 
+function sauvegarder(){
 
 
-// PROGRESSION CHAPITRE
-
-function mettreAJourProgression(){
-
-
-    let total =
-    exercices[chapitreActuel].length;
+    localStorage.setItem(
+        "xp",
+        xp
+    );
 
 
-    let fait = 0;
-
-
-
-    for(let i=0; i<total; i++){
-
-
-        let id =
-        chapitreActuel + "-" + i;
-
-
-        if(exercicesValides[id]){
-
-            fait++;
-
-        }
-
-    }
-
-
-
-    let pourcentage =
-    Math.round((fait / total) * 100);
-
-
-
-    chapitreProgression.textContent =
-    pourcentage + " %";
-
-
-
-    barreXP.style.width =
-    pourcentage + "%";
-
-
-
-    reussis.textContent =
-    Object.keys(exercicesValides).length;
-
+    localStorage.setItem(
+        "progression",
+        JSON.stringify(progression)
+    );
 
 
 }
@@ -173,7 +96,10 @@ function mettreAJourProgression(){
 
 
 
-// AFFICHER EXERCICE
+/* =====================
+   AFFICHER EXERCICE
+===================== */
+
 
 function afficherExercice(){
 
@@ -182,33 +108,27 @@ function afficherExercice(){
     exercices[chapitreActuel][numeroExercice];
 
 
-
     titre.textContent =
     chapitreActuel;
 
 
 
     compteur.textContent =
-    `Exercice ${numeroExercice + 1} / ${exercices[chapitreActuel].length}`;
+    `Exercice ${numeroExercice+1} / ${exercices[chapitreActuel].length}`;
 
 
 
     enonce.textContent =
-    exercice.titre + " : " + exercice.enonce;
+    exercice.titre +
+    " : " +
+    exercice.enonce;
 
 
 
-    code.value = "";
-
-    output.textContent =
-    "Sortie :";
+    code.value="";
 
 
-    aideTexte.textContent = "";
-
-
-
-    mettreAJourProgression();
+    output.textContent="Sortie :";
 
 
 }
@@ -219,188 +139,105 @@ function afficherExercice(){
 
 
 
-// CHANGER CHAPITRE
+/* =====================
+   CHAPITRES
+===================== */
 
 
-document.querySelectorAll("aside button")
-.forEach(button => {
+document
+.querySelectorAll("aside button")
+.forEach(button=>{
 
 
-    button.addEventListener("click",()=>{
+    button.addEventListener(
+        "click",
+        ()=>{
 
 
         chapitreActuel =
         button.textContent;
 
 
-
         numeroExercice =
         progression[chapitreActuel] || 0;
 
 
-
         afficherExercice();
 
 
 
-    });
+        // ferme menu mobile
 
-
-});
-
-
-
-
-
-
-
-// COURS
-
-boutonCours.addEventListener("click",()=>{
-
-
-    let exercice =
-    exercices[chapitreActuel][numeroExercice];
-
-
-    aideTexte.textContent =
-    "📚 " + exercice.cours;
-
-
-});
-
-
-
-
-
-
-// INDICE
-
-boutonIndice.addEventListener("click",()=>{
-
-
-    let exercice =
-    exercices[chapitreActuel][numeroExercice];
-
-
-    aideTexte.textContent =
-    "💡 " + exercice.indice;
-
-
-});
-
-
-
-
-
-
-
-// CORRECTION
-
-boutonCorrection.addEventListener("click",()=>{
-
-
-    let exercice =
-    exercices[chapitreActuel][numeroExercice];
-
-
-    aideTexte.textContent =
-    "🧠 " + exercice.correction;
-
-
-});
-
-
-
-
-
-
-
-
-// VERIFIER
-
-boutonVerifier.addEventListener("click",()=>{
-
-
-    let exercice =
-    exercices[chapitreActuel][numeroExercice];
-
-
-
-    let id =
-    chapitreActuel + "-" + numeroExercice;
-
-
-
-    if(code.value.includes(exercice.solution)){
-
-
-
-        if(!exercicesValides[id]){
-
-
-            xp += exercice.xp;
-
-
-            exercicesValides[id] = true;
-
-
-
-            localStorage.setItem(
-                "xp",
-                xp
-            );
-
-
-            localStorage.setItem(
-                "exercicesValides",
-                JSON.stringify(exercicesValides)
-            );
+        menuChapitre.classList.remove("active");
 
 
         }
+    );
+
+
+});
 
 
 
-        output.textContent =
-        "✅ Correct ! +" + exercice.xp + " XP";
 
 
 
-        xpElement.textContent = xp;
+
+/* =====================
+   VERIFIER
+===================== */
+
+
+boutonVerifier.addEventListener(
+"click",
+()=>{
+
+
+let exercice =
+exercices[chapitreActuel][numeroExercice];
 
 
 
-        mettreAJourNiveau();
+if(code.value.includes(exercice.solution)){
 
 
-        mettreAJourProgression();
-
-
-
-        progression[chapitreActuel] =
-        numeroExercice + 1;
-
-
-
-        localStorage.setItem(
-            "progression",
-            JSON.stringify(progression)
-        );
+    output.textContent =
+    "✅ Correct ! +" +
+    exercice.xp +
+    " XP";
 
 
 
-    }
+    xp += exercice.xp;
 
 
-    else{
+
+    progression[chapitreActuel] =
+    numeroExercice + 1;
 
 
-        output.textContent =
-        "❌ Pas encore";
+
+    sauvegarder();
 
 
-    }
+
+    xpElement.textContent=xp;
+
+
+    mettreAJourNiveau();
+
+
+}
+
+
+else{
+
+
+    output.textContent =
+    "❌ Pas encore";
+
+
+}
 
 
 
@@ -413,31 +250,36 @@ boutonVerifier.addEventListener("click",()=>{
 
 
 
-// SUIVANT
-
-boutonSuivant.addEventListener("click",()=>{
-
-
-    if(numeroExercice < exercices[chapitreActuel].length - 1){
+/* =====================
+   SUIVANT
+===================== */
 
 
-        numeroExercice++;
+boutonSuivant.addEventListener(
+"click",
+()=>{
 
 
-        afficherExercice();
+if(numeroExercice <
+exercices[chapitreActuel].length-1){
 
 
-    }
+    numeroExercice++;
+
+    afficherExercice();
 
 
-    else{
+}
+
+else{
 
 
-        output.textContent =
-        "🎉 Chapitre terminé !";
+    output.textContent =
+    "🎉 Chapitre terminé !";
 
 
-    }
+}
+
 
 
 });
@@ -447,12 +289,93 @@ boutonSuivant.addEventListener("click",()=>{
 
 
 
-// DEMARRAGE
-
-numeroExercice =
-progression[chapitreActuel] || 0;
 
 
+/* =====================
+   MENU MOBILE
+===================== */
+
+
+menuMobile.addEventListener(
+"click",
+()=>{
+
+
+menuChapitre.classList.toggle("active");
+
+
+});
+
+
+
+
+
+
+
+
+/* =====================
+   BARRE DU BAS
+===================== */
+
+
+document
+.getElementById("cours")
+.addEventListener(
+"click",
+()=>{
+
+
+menuChapitre.classList.add("active");
+
+
+});
+
+
+
+
+document
+.getElementById("profil")
+.addEventListener(
+"click",
+()=>{
+
+
+alert(
+`🏆 XP : ${xp}\n🚀 ${niveau.textContent}`
+);
+
+
+});
+
+
+
+document
+.getElementById("accueil")
+.addEventListener(
+"click",
+()=>{
+
+
+chapitreActuel="Variables";
+
+numeroExercice=0;
+
+afficherExercice();
+
+
+});
+
+
+
+
+
+
+
+
+/* INITIALISATION */
+
+
+xpElement.textContent=xp;
 
 mettreAJourNiveau();
 
