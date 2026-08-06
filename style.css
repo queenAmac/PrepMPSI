@@ -1,43 +1,75 @@
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
+
+
+html{
+    min-height:100%;
+}
+
 
 
 body{
 
     min-height:100vh;
-    background:
-    linear-gradient(135deg,#050505,#101827);
 
     color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #050505,
+        #111827,
+        #312e81
+    );
+
+    background-attachment:fixed;
+
+    overflow-x:hidden;
 
 }
 
 
 
+
+
+
+
 /* HEADER */
+
 
 header{
 
     height:90px;
 
     display:flex;
+
     align-items:center;
 
-    gap:20px;
+    justify-content:space-between;
 
     padding:20px 40px;
+
 
     background:
     rgba(255,255,255,0.08);
 
+
     backdrop-filter:blur(20px);
+
 
     border-bottom:
     1px solid rgba(255,255,255,.15);
+
+
+    position:sticky;
+
+    top:0;
+
+    z-index:10;
 
 }
 
@@ -50,15 +82,24 @@ header h1{
 }
 
 
+
 header p{
 
-    color:#b8b8b8;
+    color:#cfcfcf;
 
 }
 
 
 
-/* bouton menu mobile */
+.header-xp{
+
+    font-size:18px;
+
+}
+
+
+
+
 
 #menuMobile{
 
@@ -78,9 +119,12 @@ header p{
 
 
 
+
+
 /* STRUCTURE */
 
-.container{
+
+.layout{
 
     display:flex;
 
@@ -90,21 +134,34 @@ header p{
 
 
 
+
+
+
+
 /* MENU GAUCHE */
+
 
 aside{
 
-    width:260px;
+
+    width:280px;
+
 
     padding:25px;
 
+
     background:
+
     rgba(255,255,255,.06);
+
 
     backdrop-filter:blur(20px);
 
+
     border-right:
-    1px solid rgba(255,255,255,.12);
+
+    1px solid rgba(255,255,255,.15);
+
 
 }
 
@@ -118,25 +175,30 @@ aside h2{
 
 
 
-aside button{
+.chapitres button{
 
 
     width:100%;
 
-    padding:12px;
+
+    padding:14px;
+
 
     margin-bottom:10px;
 
 
     border:none;
 
-    border-radius:14px;
+
+    border-radius:16px;
 
 
     color:white;
 
+
     background:
-    rgba(255,255,255,.08);
+
+    rgba(255,255,255,.1);
 
 
     cursor:pointer;
@@ -144,22 +206,33 @@ aside button{
 
     transition:.25s;
 
+
 }
 
 
 
-aside button:hover{
+.chapitres button:hover{
 
-    transform:translateX(5px);
+
+    transform:translateX(6px);
+
 
     background:
-    rgba(255,255,255,.18);
+
+    rgba(255,255,255,.2);
+
 
 }
 
 
 
 
+
+
+
+
+
+/* PROGRESSION */
 
 
 .progression{
@@ -167,16 +240,78 @@ aside button:hover{
 
     margin-top:30px;
 
-    padding:15px;
+
+    padding:20px;
+
+
+    border-radius:25px;
+
+
+    background:
+
+    rgba(255,255,255,.1);
+
+
+}
+
+
+
+
+.xp-bar{
+
+
+    width:100%;
+
+
+    height:12px;
+
+
+    background:
+
+    rgba(255,255,255,.15);
 
 
     border-radius:20px;
 
 
-    background:
-    rgba(255,255,255,.08);
+    overflow:hidden;
+
+
+    margin:15px 0;
+
 
 }
+
+
+
+#xpProgress,
+#xpProgressProfil{
+
+
+    height:100%;
+
+
+    width:0%;
+
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #6366f1,
+        #c084fc
+    );
+
+
+    border-radius:20px;
+
+
+    transition:.5s;
+
+
+}
+
+
 
 
 
@@ -186,23 +321,28 @@ aside button:hover{
 
 /* CONTENU */
 
+
 main{
 
 
     flex:1;
 
-    padding:40px;
 
     max-width:900px;
 
+
     margin:auto;
+
+
+    padding:40px;
 
 
 }
 
 
 
-#titre{
+
+h2{
 
     font-size:38px;
 
@@ -212,7 +352,7 @@ main{
 
 #compteur{
 
-    color:#aaa;
+    color:#bbb;
 
     margin:10px 0 25px;
 
@@ -220,26 +360,43 @@ main{
 
 
 
-#enonce{
 
 
-    padding:25px;
-
-
-    border-radius:25px;
+.card{
 
 
     background:
+
     rgba(255,255,255,.1);
 
 
     backdrop-filter:blur(20px);
 
 
-    font-size:18px;
+    border:
+
+    1px solid rgba(255,255,255,.15);
+
+
+    border-radius:28px;
+
+
+    padding:25px;
 
 
     margin-bottom:25px;
+
+
+}
+
+
+
+
+
+#enonce{
+
+
+    font-size:18px;
 
 }
 
@@ -254,7 +411,17 @@ textarea{
 
     width:100%;
 
+
     height:220px;
+
+
+    border:none;
+
+
+    outline:none;
+
+
+    resize:none;
 
 
     padding:20px;
@@ -263,13 +430,7 @@ textarea{
     border-radius:25px;
 
 
-    border:none;
-
-
-    resize:none;
-
-
-    background:#080808;
+    background:#050505;
 
 
     color:white;
@@ -277,8 +438,8 @@ textarea{
 
     font-size:16px;
 
-}
 
+}
 
 
 
@@ -290,18 +451,12 @@ textarea{
 
     display:flex;
 
+
     gap:15px;
+
 
     margin-top:20px;
 
-}
-
-
-
-button{
-
-
-    cursor:pointer;
 
 }
 
@@ -316,17 +471,25 @@ button{
     padding:15px;
 
 
-    border-radius:18px;
-
-
     border:none;
+
+
+    border-radius:20px;
+
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #6366f1,
+        #a855f7
+    );
 
 
     color:white;
 
 
-    background:
-    linear-gradient(135deg,#6366f1,#8b5cf6);
+    cursor:pointer;
 
 
     transition:.25s;
@@ -338,31 +501,9 @@ button{
 
 .buttons button:hover{
 
+
     transform:translateY(-4px);
 
-}
-
-
-
-
-
-
-
-.output{
-
-
-    margin-top:25px;
-
-
-    padding:20px;
-
-
-    border-radius:20px;
-
-
-    background:
-    rgba(255,255,255,.08);
-
 
 }
 
@@ -371,7 +512,23 @@ button{
 
 
 
-/* BARRE BAS MOBILE */
+
+.hidden{
+
+    display:none;
+
+}
+
+
+
+
+
+
+
+
+
+/* BARRE MOBILE */
+
 
 .bottom-nav{
 
@@ -386,9 +543,8 @@ button{
 
 
 
-/* =====================
-   MOBILE
-===================== */
+
+/* TELEPHONE */
 
 
 @media(max-width:768px){
@@ -397,10 +553,9 @@ button{
 
 body{
 
-    padding-bottom:80px;
+    padding-bottom:90px;
 
 }
-
 
 
 
@@ -414,19 +569,12 @@ header{
 
 
 
-#menuMobile{
-
-    display:block;
-
-}
-
-
-
 header h1{
 
     font-size:24px;
 
 }
+
 
 
 header p{
@@ -437,13 +585,21 @@ header p{
 
 
 
-
-
-.container{
+#menuMobile{
 
     display:block;
 
 }
+
+
+
+
+.layout{
+
+    display:block;
+
+}
+
 
 
 
@@ -456,15 +612,14 @@ aside{
 
     top:0;
 
-    left:-280px;
+
+    left:-300px;
 
 
     height:100vh;
 
-    width:270px;
 
-
-    z-index:20;
+    z-index:50;
 
 
     transition:.35s;
@@ -473,9 +628,12 @@ aside{
 }
 
 
+
 aside.active{
 
+
     left:0;
+
 
 }
 
@@ -488,11 +646,12 @@ main{
 
     padding:20px 15px;
 
+
 }
 
 
 
-#titre{
+h2{
 
     font-size:30px;
 
@@ -500,20 +659,9 @@ main{
 
 
 
-
-#enonce{
-
-    font-size:16px;
-
-    padding:20px;
-
-}
-
-
-
 textarea{
 
-    height:180px;
+    height:170px;
 
 }
 
@@ -525,31 +673,18 @@ textarea{
 
     flex-direction:column;
 
-
 }
 
 
 
-.buttons button{
-
-
-    width:100%;
-
-}
-
-
-
-
-
-/* BARRE APPLICATION */
 
 .bottom-nav{
 
 
-    position:fixed;
-
-
     display:flex;
+
+
+    position:fixed;
 
 
     bottom:15px;
@@ -580,23 +715,24 @@ textarea{
     1px solid rgba(255,255,255,.2);
 
 
-    z-index:30;
-
-
     justify-content:space-around;
 
 
     align-items:center;
 
 
+    z-index:100;
+
+
 }
 
 
 
-.bottom-nav button{
+.nav-btn{
 
 
     background:none;
+
 
     border:none;
 
@@ -610,7 +746,7 @@ textarea{
     flex-direction:column;
 
 
-    gap:5px;
+    gap:4px;
 
 
     font-size:22px;
@@ -620,9 +756,20 @@ textarea{
 
 
 
-.bottom-nav span{
+.nav-btn span{
+
 
     font-size:12px;
+
+}
+
+
+
+.nav-btn.active{
+
+
+    transform:translateY(-8px);
+
 
 }
 
