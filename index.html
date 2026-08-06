@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PrepMPSI</title>
+<title>PrepMPSI 🐍</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -17,22 +17,86 @@
 <body>
 
 
+<!-- POPUP PREMIERE CONNEXION -->
+
+<div id="pseudoPopup" class="popup">
+
+
+<div class="popup-card">
+
+
+<h2>🐍 Bienvenue sur PrepMPSI</h2>
+
+
+<p>
+Comment dois-je t'appeler ?
+</p>
+
+
+<input 
+id="pseudoInput"
+placeholder="Ton prénom ou pseudo">
+
+
+<button id="startButton">
+Commencer 🚀
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- HEADER -->
+
+
 <header>
+
 
 <button id="menuMobile">
 ☰
 </button>
 
-<div>
-<h1>🐍 PrepMPSI</h1>
-<p>Terminale → MPSI</p>
+
+
+<div class="logo-zone">
+
+
+<h1>
+🐍 PrepMPSI
+</h1>
+
+
+<p>
+Terminale → MPSI
+</p>
+
+
 </div>
+
+
+
 
 <div class="header-xp">
+
 ⭐ <span id="xp">0</span> XP
+
 </div>
 
+
+
 </header>
+
+
+
 
 
 
@@ -42,10 +106,15 @@
 
 
 
-<!-- MENU CHAPITRES ORDINATEUR -->
+
+
+<!-- MENU CHAPITRES -->
 
 
 <aside id="menuChapitre">
+
+
+<div class="menu-title">
 
 
 <h2>
@@ -54,31 +123,64 @@
 
 
 
-<div class="chapitres">
-
-
-<button>Variables</button>
-
-<button>Types</button>
-
-<button>Affectations</button>
-
-<button>Opérations</button>
-
-<button>Conditions</button>
-
-<button>Boucles</button>
-
-<button>Fonctions</button>
-
-<button>Listes</button>
-
-<button>Dictionnaires</button>
-
-<button>Algorithmique</button>
+<button id="fermerMenu">
+✕
+</button>
 
 
 </div>
+
+
+
+
+
+<div class="chapitres">
+
+
+<button>
+Variables
+</button>
+
+
+<button>
+Types
+</button>
+
+
+<button>
+Affectations
+</button>
+
+
+<button>
+Conditions
+</button>
+
+
+<button>
+Boucles
+</button>
+
+
+<button>
+Fonctions
+</button>
+
+
+<button>
+Listes
+</button>
+
+
+<button>
+Algorithmique
+</button>
+
+
+</div>
+
+
+
 
 
 
@@ -98,6 +200,7 @@ Débutant
 </p>
 
 
+
 <div class="xp-bar">
 
 <div id="xpProgress"></div>
@@ -105,12 +208,17 @@ Débutant
 </div>
 
 
-<p id="xpText">
-0 / 100 XP
+
+<p>
+<span id="xpText">
+0 XP
+</span>
 </p>
 
 
+
 </div>
+
 
 
 </aside>
@@ -122,41 +230,54 @@ Débutant
 
 
 
-<!-- CONTENU PRINCIPAL -->
+
+<!-- CONTENU -->
 
 
 <main>
 
 
 
+
+<!-- PAGE ACCUEIL -->
+
+
 <section id="pageAccueil">
 
 
 
-<h2 id="titre">
-Variables
-</h2>
 
 
-<p id="compteur">
-Exercice 1 / 10
-</p>
+<!-- ASSISTANT SERPENT -->
+
+
+<div class="assistant">
+
+
+<div class="snake">
+
+🐍
+
+</div>
 
 
 
-<div class="card exercice">
+<div>
 
 
 <h3>
-Énoncé
+PrepSnake
 </h3>
 
 
-<p id="enonce">
+<p id="messageSnake">
 
-Chargement...
+Salut ! Prêt à coder ?
 
 </p>
+
+
+</div>
 
 
 </div>
@@ -165,10 +286,47 @@ Chargement...
 
 
 
+
+
+
+<h2 id="titre">
+Variables
+</h2>
+
+
+
+<p id="compteur">
+Exercice 1 / 10
+</p>
+
+
+
+
+
+
+
+
+<div id="enonce">
+
+
+Chargement...
+
+</div>
+
+
+
+
+
+
+
+
 <textarea 
 id="code"
 placeholder="Écris ton code Python ici...">
+
 </textarea>
+
+
 
 
 
@@ -193,6 +351,33 @@ placeholder="Écris ton code Python ici...">
 </button>
 
 
+</div>
+
+
+
+
+
+
+
+
+
+<div class="assistant-actions">
+
+
+<button id="indice">
+
+💡 Demander un indice au serpent
+
+</button>
+
+
+
+<button id="aideIA">
+
+🐍 Aide PrepSnake
+
+</button>
+
 
 </div>
 
@@ -200,7 +385,22 @@ placeholder="Écris ton code Python ici...">
 
 
 
-<div class="card output">
+
+
+
+<div id="aideTexte">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="output">
+
 
 Sortie :
 
@@ -210,7 +410,12 @@ Sortie :
 
 
 
+
+
 </section>
+
+
+
 
 
 
@@ -232,19 +437,17 @@ Sortie :
 </h2>
 
 
-<p>
-Choisis un chapitre
-</p>
-
-
 
 <div id="listeCours">
 
 </div>
 
 
-
 </section>
+
+
+
+
 
 
 
@@ -260,18 +463,23 @@ Choisis un chapitre
 <section id="pageProfil" class="hidden">
 
 
+
 <h2>
 🏆 Profil
 </h2>
 
 
 
-<div class="card profil-card">
+<div class="profil-card">
+
 
 
 <h3>
-Progression
+👤 <span id="pseudoProfil">
+Utilisateur
+</span>
 </h3>
+
 
 
 <p>
@@ -280,6 +488,7 @@ XP :
 0
 </span>
 </p>
+
 
 
 <p>
@@ -291,11 +500,12 @@ Débutant
 
 
 
-<div class="xp-bar">
+<button id="changerPseudo">
 
-<div id="xpProgressProfil"></div>
+✏️ Modifier mon pseudo
 
-</div>
+</button>
+
 
 
 </div>
@@ -303,6 +513,7 @@ Débutant
 
 
 </section>
+
 
 
 
@@ -323,8 +534,7 @@ Débutant
 
 
 
-
-<!-- NAVIGATION MOBILE -->
+<!-- BARRE MOBILE -->
 
 
 <nav class="bottom-nav">
@@ -342,7 +552,6 @@ Accueil
 
 
 
-
 <button id="cours" class="nav-btn">
 
 📚
@@ -352,8 +561,6 @@ Cours
 </span>
 
 </button>
-
-
 
 
 
@@ -368,8 +575,9 @@ Profil
 </button>
 
 
-
 </nav>
+
+
 
 
 
@@ -379,6 +587,7 @@ Profil
 <script src="data/exercices.js"></script>
 
 <script src="app.js"></script>
+
 
 
 </body>
